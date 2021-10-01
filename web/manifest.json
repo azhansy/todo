@@ -1,11 +1,11 @@
 {
-    "name": "todo",
-    "short_name": "todo",
+    "name": "tobo",
+    "short_name": "tobo",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new todo application.",
+    "description": "A new tobo application.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

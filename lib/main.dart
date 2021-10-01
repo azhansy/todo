@@ -5,7 +5,7 @@ import 'package:data_plugin/bmob/bmob.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:todo/app_pages.dart';
+import 'package:tobo/app_pages.dart';
 
 import 'net/api/apis.dart';
 import 'res/colors.dart';

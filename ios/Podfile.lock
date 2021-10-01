@@ -1,0 +1,251 @@
+PODS:
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
+  - awesome_core_native (0.0.1):
+    - Flutter
+  - connectivity (0.0.1):
+    - Flutter
+    - Reachability
+  - data_plugin (0.0.1):
+    - Flutter
+  - device_info (0.0.1):
+    - Flutter
+  - DKImagePickerController/Core (4.3.2):
+    - DKImagePickerController/ImageDataManager
+    - DKImagePickerController/Resource
+  - DKImagePickerController/ImageDataManager (4.3.2)
+  - DKImagePickerController/PhotoGallery (4.3.2):
+    - DKImagePickerController/Core
+    - DKPhotoGallery
+  - DKImagePickerController/Resource (4.3.2)
+  - DKPhotoGallery (0.0.17):
+    - DKPhotoGallery/Core (= 0.0.17)
+    - DKPhotoGallery/Model (= 0.0.17)
+    - DKPhotoGallery/Preview (= 0.0.17)
+    - DKPhotoGallery/Resource (= 0.0.17)
+    - SDWebImage
+    - SwiftyGif
+  - DKPhotoGallery/Core (0.0.17):
+    - DKPhotoGallery/Model
+    - DKPhotoGallery/Preview
+    - SDWebImage
+    - SwiftyGif
+  - DKPhotoGallery/Model (0.0.17):
+    - SDWebImage
+    - SwiftyGif
+  - DKPhotoGallery/Preview (0.0.17):
+    - DKPhotoGallery/Model
+    - DKPhotoGallery/Resource
+    - SDWebImage
+    - SwiftyGif
+  - DKPhotoGallery/Resource (0.0.17):
+    - SDWebImage
+    - SwiftyGif
+  - DTTJailbreakDetection (0.4.0)
+  - file_picker (0.0.1):
+    - DKImagePickerController/PhotoGallery
+    - Flutter
+  - Flutter (1.0.0)
+  - flutter_jailbreak_detection (1.0.0):
+    - DTTJailbreakDetection
+    - Flutter
+  - flutter_native_image (0.0.1):
+    - Flutter
+  - flutter_video_info (1.1.0):
+    - Flutter
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
+  - get_version (0.0.1):
+    - Flutter
+  - image_picker (0.0.1):
+    - Flutter
+  - image_pickers (0.0.1):
+    - AFNetworking
+    - Flutter
+    - ZLPhotoBrowser-objc (= 1.0.4)
+  - libwebp (1.2.1):
+    - libwebp/demux (= 1.2.1)
+    - libwebp/mux (= 1.2.1)
+    - libwebp/webp (= 1.2.1)
+  - libwebp/demux (1.2.1):
+    - libwebp/webp
+  - libwebp/mux (1.2.1):
+    - libwebp/demux
+  - libwebp/webp (1.2.1)
+  - package_info (0.0.1):
+    - Flutter
+  - package_info_plus (0.4.5):
+    - Flutter
+  - path_provider (0.0.1):
+    - Flutter
+  - "permission_handler (5.1.0+2)":
+    - Flutter
+  - Reachability (3.2)
+  - SDWebImage (5.12.0):
+    - SDWebImage/Core (= 5.12.0)
+  - SDWebImage/Core (5.12.0)
+  - Sentry (7.1.4):
+    - Sentry/Core (= 7.1.4)
+  - Sentry/Core (7.1.4)
+  - sentry_flutter (0.0.1):
+    - Flutter
+    - FlutterMacOS
+    - Sentry (~> 7.1.3)
+  - share (0.0.1):
+    - Flutter
+  - shared_preferences (0.0.1):
+    - Flutter
+  - sqflite (0.0.2):
+    - Flutter
+    - FMDB (>= 2.7.5)
+  - SwiftyGif (5.4.0)
+  - url_launcher (0.0.1):
+    - Flutter
+  - video_thumbnail (0.0.1):
+    - Flutter
+    - libwebp
+  - webview_flutter_wkwebview (0.0.1):
+    - Flutter
+  - ZLPhotoBrowser-objc (1.0.4):
+    - SDWebImage
+
+DEPENDENCIES:
+  - awesome_core_native (from `.symlinks/plugins/awesome_core_native/ios`)
+  - connectivity (from `.symlinks/plugins/connectivity/ios`)
+  - data_plugin (from `.symlinks/plugins/data_plugin/ios`)
+  - device_info (from `.symlinks/plugins/device_info/ios`)
+  - file_picker (from `.symlinks/plugins/file_picker/ios`)
+  - Flutter (from `Flutter`)
+  - flutter_jailbreak_detection (from `.symlinks/plugins/flutter_jailbreak_detection/ios`)
+  - flutter_native_image (from `.symlinks/plugins/flutter_native_image/ios`)
+  - flutter_video_info (from `.symlinks/plugins/flutter_video_info/ios`)
+  - get_version (from `.symlinks/plugins/get_version/ios`)
+  - image_picker (from `.symlinks/plugins/image_picker/ios`)
+  - image_pickers (from `.symlinks/plugins/image_pickers/ios`)
+  - package_info (from `.symlinks/plugins/package_info/ios`)
+  - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
+  - path_provider (from `.symlinks/plugins/path_provider/ios`)
+  - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
+  - sentry_flutter (from `.symlinks/plugins/sentry_flutter/ios`)
+  - share (from `.symlinks/plugins/share/ios`)
+  - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
+  - sqflite (from `.symlinks/plugins/sqflite/ios`)
+  - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
+  - video_thumbnail (from `.symlinks/plugins/video_thumbnail/ios`)
+  - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
+
+SPEC REPOS:
+  trunk:
+    - AFNetworking
+    - DKImagePickerController
+    - DKPhotoGallery
+    - DTTJailbreakDetection
+    - FMDB
+    - libwebp
+    - Reachability
+    - SDWebImage
+    - Sentry
+    - SwiftyGif
+    - ZLPhotoBrowser-objc
+
+EXTERNAL SOURCES:
+  awesome_core_native:
+    :path: ".symlinks/plugins/awesome_core_native/ios"
+  connectivity:
+    :path: ".symlinks/plugins/connectivity/ios"
+  data_plugin:
+    :path: ".symlinks/plugins/data_plugin/ios"
+  device_info:
+    :path: ".symlinks/plugins/device_info/ios"
+  file_picker:
+    :path: ".symlinks/plugins/file_picker/ios"
+  Flutter:
+    :path: Flutter
+  flutter_jailbreak_detection:
+    :path: ".symlinks/plugins/flutter_jailbreak_detection/ios"
+  flutter_native_image:
+    :path: ".symlinks/plugins/flutter_native_image/ios"
+  flutter_video_info:
+    :path: ".symlinks/plugins/flutter_video_info/ios"
+  get_version:
+    :path: ".symlinks/plugins/get_version/ios"
+  image_picker:
+    :path: ".symlinks/plugins/image_picker/ios"
+  image_pickers:
+    :path: ".symlinks/plugins/image_pickers/ios"
+  package_info:
+    :path: ".symlinks/plugins/package_info/ios"
+  package_info_plus:
+    :path: ".symlinks/plugins/package_info_plus/ios"
+  path_provider:
+    :path: ".symlinks/plugins/path_provider/ios"
+  permission_handler:
+    :path: ".symlinks/plugins/permission_handler/ios"
+  sentry_flutter:
+    :path: ".symlinks/plugins/sentry_flutter/ios"
+  share:
+    :path: ".symlinks/plugins/share/ios"
+  shared_preferences:
+    :path: ".symlinks/plugins/shared_preferences/ios"
+  sqflite:
+    :path: ".symlinks/plugins/sqflite/ios"
+  url_launcher:
+    :path: ".symlinks/plugins/url_launcher/ios"
+  video_thumbnail:
+    :path: ".symlinks/plugins/video_thumbnail/ios"
+  webview_flutter_wkwebview:
+    :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
+
+SPEC CHECKSUMS:
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  awesome_core_native: c7404388a145af879beb2474d7c3b007b81d6aed
+  connectivity: c4130b2985d4ef6fd26f9702e886bd5260681467
+  data_plugin: 718d6550a02b30410748b3b7711ee393933070e6
+  device_info: d7d233b645a32c40dfdc212de5cf646ca482f175
+  DKImagePickerController: b5eb7f7a388e4643264105d648d01f727110fc3d
+  DKPhotoGallery: fdfad5125a9fdda9cc57df834d49df790dbb4179
+  DTTJailbreakDetection: 5e356c5badc17995f65a83ed9483f787a0057b71
+  file_picker: 3e6c3790de664ccf9b882732d9db5eaf6b8d4eb1
+  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  flutter_jailbreak_detection: f6c01e4bc73641c6b69c5112e50301240601abb4
+  flutter_native_image: 9c0b7451838484458e5b0fae007b86a4c2d4bdfe
+  flutter_video_info: a932e1b0da369bba95c3a14b7f61d5f8b0d03280
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  get_version: 2bc18c4e26a265571662cab5d38f8b50dc8c1c77
+  image_picker: 50e7c7ff960e5f58faa4d1f4af84a771c671bc4a
+  image_pickers: 25c8916d358bc9d2707cb470ba3d57497f105773
+  libwebp: 98a37e597e40bfdb4c911fc98f2c53d0b12d05fc
+  package_info: 873975fc26034f0b863a300ad47e7f1ac6c7ec62
+  package_info_plus: 6c92f08e1f853dc01228d6f553146438dafcd14e
+  path_provider: d1e9807085df1f9cc9318206cd649dc0b76be3de
+  permission_handler: ccb20a9fad0ee9b1314a52b70b76b473c5f8dab0
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  SDWebImage: 4ea20cca2986adc5aacde07aa686742fd4c67a37
+  Sentry: 1d3eb1a25f8c5333c88dd5603904a6d461cd9fcf
+  sentry_flutter: f20d4f199442900fbdab2b8496f1d2091d8b94d9
+  share: 0b2c3e82132f5888bccca3351c504d0003b3b410
+  shared_preferences: 5033afbb22d372e15aff8ff766df9021b845f273
+  sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
+  SwiftyGif: 5d4af95df24caf1c570dbbcb32a3b8a0763bc6d7
+  url_launcher: b6e016d912f04be9f5bf6e8e82dc599b7ba59649
+  video_thumbnail: c4e2a3c539e247d4de13cd545344fd2d26ffafd1
+  webview_flutter_wkwebview: 44aa025fbcf6730d808f1e0d86a5af5ac25fa8de
+  ZLPhotoBrowser-objc: c7657d3bc85ae231884e058d0e3638f619164736
+
+PODFILE CHECKSUM: 3746afe16a5d1b15ecd2c5d132635839b11068ea
+
+COCOAPODS: 1.11.0

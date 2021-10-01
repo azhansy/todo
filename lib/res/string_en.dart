@@ -1,5 +1,5 @@
 import 'package:awesome_core/res/string.dart';
-import 'package:todo/res/strings.dart';
+import 'package:tobo/res/strings.dart';
 
 //英文
 const Map<String, String> languageEnglish = {

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.azhansy.todo">
+    package="com.azhansy.tobo">
    <application
-        android:label="todo"
+        android:label="tobo"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

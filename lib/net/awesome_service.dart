@@ -1,7 +1,7 @@
 import 'package:awesome_core/core.dart';
 import 'package:data_plugin/bmob/table/bmob_user.dart';
-import 'package:todo/common/application.dart';
-import 'package:todo/res/index.dart';
+import 'package:tobo/common/application.dart';
+import 'package:tobo/res/index.dart';
 
 import 'base_repository.dart';
 

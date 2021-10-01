@@ -1,4 +1,4 @@
-package com.azhansy.todo
+package com.azhansy.tobo
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:todo/page/login/splash_page.dart';
+import 'package:tobo/page/login/splash_page.dart';
 
 import 'common/application.dart';
 import 'page/login_page.dart';

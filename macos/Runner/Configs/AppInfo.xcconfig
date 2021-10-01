@@ -8,7 +8,7 @@
 PRODUCT_NAME = todo
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.azhansy.todo
+PRODUCT_BUNDLE_IDENTIFIER = com.azhansy.tobo
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2021 com.azhansy. All rights reserved.

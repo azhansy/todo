@@ -1,5 +1,5 @@
 import 'package:awesome_core/core.dart';
-import 'package:todo/res/index.dart';
+import 'package:tobo/res/index.dart';
 
 ///设置语言工具
 class LanguageUtil extends BaseLanguageUtil {
