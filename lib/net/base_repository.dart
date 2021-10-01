@@ -36,7 +36,7 @@ abstract class BaseRepository {
     if (resultData.isSuccess()) {
       try {
         if (builder != null) {
-          var datas = <T>[];
+          final datas = <T>[];
           //尝试从下面常用的字段中解析数据,可以指定key解析列表
           if (key != null && !listKeys.contains(key)) {
             listKeys.insert(0, key);
@@ -70,7 +70,7 @@ abstract class BaseRepository {
       {Map<String, dynamic>? data,
       Function(Map<String, dynamic> json)? builder,
       bool showMsg = false}) async {
-    var resultData =
+    final resultData =
         await HttpManager.getInstance().getData(url, queryParameters: data);
     if (resultData.isSuccess()) {
       try {

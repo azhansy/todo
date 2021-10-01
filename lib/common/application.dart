@@ -14,7 +14,7 @@ class Application {
   //用来静态判断
   static BmobUser? staticBmobUser;
 
-  static String utma = "";
+  static String utma = '';
   Future<Application?> init() async {
     utma = BaseConfig.IMEI;
     return this;
@@ -34,7 +34,7 @@ class Application {
     _account = account;
     staticBmobUser = account;
     if (save && null != _account) {
-      var result = await _account!.save();
+      final result = await _account!.save();
       debugPrint('是否保存成功=$result,${_account.toString()}');
     }
     // notifyListeners();

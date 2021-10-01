@@ -11,7 +11,7 @@ class ApiCode with BaseApiCode{
   ///版本检查为0，强制更新为-10005，1.普通更新 2.强制更新
   static const VERSION_UPDATE = -10005;
 
-  static const NETWORK_JSON_EXCEPTION_MSG = "似乎遇到一点点小问题，非常抱歉给您带来不便！";
+  static const NETWORK_JSON_EXCEPTION_MSG = '似乎遇到一点点小问题，非常抱歉给您带来不便！';
 
   static const NETWORK_TIMEOUT = -9999999;
 

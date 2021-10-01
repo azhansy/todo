@@ -27,8 +27,8 @@ class Apis {
     }
   }
 
-  static void switchHost(String new_host) {
-    _host = new_host;
+  static void switchHost(String newHost) {
+    _host = newHost;
     SpUtil.putString(BaseConfig.HOST, _host);
   }
 
@@ -47,9 +47,9 @@ class Apis {
 
   static bool IS_ENCRYPT = true;
 
-  static Future switchIsEncrypt(bool is_encrypt) async {
-    IS_ENCRYPT = is_encrypt;
-    await SpUtil.putBool(BaseConfig.IS_ENCRYPT, is_encrypt);
+  static Future switchIsEncrypt(bool isEncrypt) async {
+    IS_ENCRYPT = isEncrypt;
+    await SpUtil.putBool(BaseConfig.IS_ENCRYPT, isEncrypt);
     return null;
   }
 }
