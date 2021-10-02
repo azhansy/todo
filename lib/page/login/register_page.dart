@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tobo/animation/FadeAnimation.dart';
 import 'package:tobo/net/awesome_service.dart';
 import 'package:tobo/page/home/main_page.dart';
+import 'package:tobo/res/colors.dart';
 
 import '../../r.g.dart';
 
@@ -98,7 +99,7 @@ class RegisterPage extends StatelessWidget {
                     FadeAnimation(
                         1.8,
                         Container(
-                          padding: EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(10),
@@ -169,29 +170,28 @@ class RegisterPage extends StatelessWidget {
                       height: 30,
                     ),
                     FadeAnimation(
-                        2,
-                        GestureDetector(
-                          onTap: () {
-                            _clickButton();
-                          },
-                          child: Container(
-                            height: 50,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                gradient: const LinearGradient(colors: [
-                                  Color.fromRGBO(143, 148, 251, 1),
-                                  Color.fromRGBO(143, 148, 251, .6),
-                                ])),
-                            child: const Center(
-                              child: Text(
-                                'Register',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
-                              ),
+                      2,
+                      GestureDetector(
+                        onTap: () {
+                          _clickButton();
+                        },
+                        child: Container(
+                          height: 50,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            gradient: Colours.mainLinearGradient,
+                          ),
+                          child: const Center(
+                            child: Text(
+                              'Register',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
-                        )),
+                        ),
+                      ),
+                    ),
                     const SizedBox(
                       height: 70,
                     ),

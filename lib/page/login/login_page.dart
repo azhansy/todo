@@ -4,6 +4,7 @@ import 'package:tobo/animation/FadeAnimation.dart';
 import 'package:tobo/net/index.dart';
 import 'package:tobo/page/home/main_page.dart';
 import 'package:tobo/page/login/register_page.dart';
+import 'package:tobo/res/colors.dart';
 
 import '../../r.g.dart';
 
@@ -106,13 +107,13 @@ class _LoginPageState extends State<LoginPage> {
                     FadeAnimation(
                         1.8,
                         Container(
-                          padding: EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(10),
                               boxShadow: const [
                                 BoxShadow(
-                                    color: Color.fromRGBO(143, 148, 251, .2),
+                                    color: Color.fromRGBO(143, 148, 251, 0.2),
                                     blurRadius: 20.0,
                                     offset: Offset(0, 10))
                               ]),
@@ -181,11 +182,9 @@ class _LoginPageState extends State<LoginPage> {
                         Container(
                           height: 50,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              gradient: const LinearGradient(colors: [
-                                Color.fromRGBO(143, 148, 251, 1),
-                                Color.fromRGBO(143, 148, 251, .6),
-                              ])),
+                            borderRadius: BorderRadius.circular(10),
+                            gradient: Colours.mainLinearGradient,
+                          ),
                           child: const Center(
                             child: Text(
                               'Login',
@@ -195,18 +194,16 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                         )),
-                    const SizedBox(
-                      height: 70,
-                    ),
+                    50.sizedBoxH,
                     FadeAnimation(
                       1.5,
-                      GestureDetector(
-                        onTap: () =>
-                            NavigatorUtil.pushName(RegisterPage.routeName),
-                        child: const Text(
+                      TextButton(
+                        onPressed: () {
+                          NavigatorUtil.pushName(RegisterPage.routeName);
+                        },
+                        child: Text(
                           'Register',
-                          style: TextStyle(
-                              color: Color.fromRGBO(143, 148, 251, 1)),
+                          style: TextStyle(color: Get.theme.primaryColor),
                         ),
                       ),
                     ),

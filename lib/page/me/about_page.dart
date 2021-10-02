@@ -29,8 +29,13 @@ class _AboutPageState extends State<AboutPage> {
             100.sizedBoxH,
             Expanded(
               child: Text(
-                '今天的todo让你充实每一天\n明天的todo，使你更加优秀！',
-                style: 18.textStyle(Colours.color_333333),
+                '今天的todo，让你充实每一天\n'
+                '明天的todo，让你的未来一直优秀',
+                style: 18.textStyle(
+                  Colours.color_333333,
+                  height: 2.5,
+                ),
+                textAlign: TextAlign.center,
               ),
             ),
             Center(

@@ -23,7 +23,12 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const Center(child: Text('home')),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        color: Get.theme.primaryColor.withOpacity(0.1),
+        child: const Center(child: Text('home')),
+      ),
       drawer: const DrawerWidget(),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {

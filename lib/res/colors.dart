@@ -1,11 +1,12 @@
 import 'dart:ui';
 
+import 'package:awesome_core/core.dart';
 import 'package:awesome_core/ext/screen_ext.dart';
 import 'package:flutter/material.dart';
 
 class Colours {
-  static const Color appMain = Color.fromRGBO(143, 148, 251, 1);
-  static const Color app_main_2 = Color.fromRGBO(143, 148, 251, .6);
+  static const Color appMain = Color(0xFF8F94FB);
+  static const Color app_main_2 = Color(0x998F94FB);
   static const Color color_ffde49 = Color(0xFFFFDE49);
   static const Color main_line_color = Color(0xFFFFE4A2);
   static const Color bg_color = Color(0xFFF6F6FA);
@@ -92,9 +93,9 @@ class Colours {
   static const Color color_e8edff = Color(0xFFe8edff);
   static const Color color_66000000 = Color(0xFF66000000);
 
-  static const app_decoration = BoxDecoration(gradient: mainLinearGradient);
-  static const LinearGradient mainLinearGradient =
-      LinearGradient(colors: [app_main_2, appMain]);
+  static  BoxDecoration app_decoration = BoxDecoration(gradient: mainLinearGradient);
+  static  LinearGradient mainLinearGradient =
+      LinearGradient(colors: [Get.theme.primaryColor, Get.theme.primaryColor.withOpacity(0.6)]);
 
   static const LinearGradient carDetailGradient = LinearGradient(
       colors: [color_f7f7f7, color_242424],

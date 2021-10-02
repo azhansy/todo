@@ -1,8 +1,6 @@
 import 'package:awesome_core/core.dart';
 import 'package:flutter/material.dart';
 
-import '../../r.g.dart';
-
 ///
 /// @author dashu
 /// @date 10/2/21
@@ -29,18 +27,23 @@ class _InputPageState extends State<InputPage> {
           onPressed: () => onSave(),
         )
       ],
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: TextField(
-          decoration: const InputDecoration(
-            contentPadding: EdgeInsets.all(10.0),
-            icon: Icon(Icons.note_add),
-            labelText: 'Your todo',
-            helperText: 'Write your simple todo',
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        color: Get.theme.primaryColor.withOpacity(0.1),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextField(
+            decoration: const InputDecoration(
+              contentPadding: EdgeInsets.all(10.0),
+              icon: Icon(Icons.note_add),
+              labelText: 'Your todo',
+              helperText: 'Write your simple todo',
+            ),
+            controller: controller,
+            autofocus: true,
+            onSubmitted: (s) => onSave(),
           ),
-          controller: controller,
-          autofocus: true,
-          onSubmitted: (s) => onSave(),
         ),
       ),
     );

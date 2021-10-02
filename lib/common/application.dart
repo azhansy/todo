@@ -1,4 +1,5 @@
-import 'dart:math';
+import 'dart:convert';
+
 import 'package:awesome_core/core.dart';
 import 'package:data_plugin/bmob/table/bmob_user.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,6 +16,7 @@ class Application {
   static BmobUser? staticBmobUser;
 
   static String utma = '';
+
   Future<Application?> init() async {
     utma = BaseConfig.IMEI;
     return this;
@@ -22,7 +24,14 @@ class Application {
 
   Application._internal() {
     // 初始化
-    _account = null;
+    final String user = SpUtil.getString('user') ?? '';
+    if (user.isNotEmpty) {
+      final map = json.decode(user);
+      _account = BmobUser.fromJson(map);
+      staticBmobUser = _account;
+    } else {
+      _account = null;
+    }
   }
 
   static Application _getInstance() {
@@ -30,7 +39,7 @@ class Application {
     return _instance!;
   }
 
-  void saveBmobUser(BmobUser account, {bool save = true}) async {
+  Future<void> saveBmobUser(BmobUser account, {bool save = true}) async {
     _account = account;
     staticBmobUser = account;
     if (save && null != _account) {
@@ -43,7 +52,6 @@ class Application {
   BmobUser? getBmobUser() {
     return _account;
   }
-
 
   void setAccount(BmobUser bmobUser) {
     _account = bmobUser;
@@ -69,7 +77,6 @@ class Application {
     }
   }
 
-
   void logout({BuildContext? context}) {
     context ??= Get.context;
     if (context != null) {
@@ -78,6 +85,6 @@ class Application {
       //     context, LoginPage.routeName, (route) => false);
     }
   }
-  
+
   bool get isLogin => _account != null;
 }

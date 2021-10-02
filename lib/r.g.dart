@@ -135,6 +135,10 @@ class _R_Image_AssetResource {
 // ignore: camel_case_types
 class _R_Svg_AssetResource {
   const _R_Svg_AssetResource();
+
+  /// asset: assets/images/logo.svg
+  // ignore: non_constant_identifier_names
+  final logo = const AssetResource("assets/images/logo.svg", packageName: null);
 }
 
 // ignore: camel_case_types
@@ -204,6 +208,14 @@ class _R_Svg {
   const _R_Svg();
 
   final asset = const _R_Svg_AssetResource();
+
+  /// asset: assets/images/logo.svg
+  // ignore: non_constant_identifier_names
+  AssetSvg logo({required double width, required double height}) {
+    final imageProvider =
+        AssetSvg(asset.logo.keyName, width: width, height: height);
+    return imageProvider;
+  }
 }
 
 /// This `_R_Text` class is generated and contains references to static text asset resources.
