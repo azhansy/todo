@@ -143,10 +143,9 @@ class _LoginPageState extends State<LoginPage> {
                                     validator: (v) {
                                       return (v?.trim().length ?? 0) > 4
                                           ? null
-                                          : '';
+                                          : 'Please enter more than 4 characters';
                                     },
-                                    onSaved: (value) => account = value ??
-                                        'Please enter more than 4 characters',
+                                    onSaved: (value) => account = value ?? '',
                                   ),
                                 ),
                                 Container(
@@ -161,7 +160,7 @@ class _LoginPageState extends State<LoginPage> {
                                     validator: (v) {
                                       return (v?.trim().length ?? 0) > 4
                                           ? null
-                                          : 'please Enter more than 4 characters';
+                                          : 'Please enter more than 4 characters';
                                     },
                                     onSaved: (value) => psw = value ?? '',
                                     focusNode: pswFocusNode,
@@ -179,18 +178,23 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     FadeAnimation(
                         2,
-                        Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            gradient: Colours.mainLinearGradient,
-                          ),
-                          child: const Center(
-                            child: Text(
-                              'Login',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
+                        GestureDetector(
+                          onTap: () {
+                            _clickButton();
+                          },
+                          child: Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              gradient: Colours.mainLinearGradient,
+                            ),
+                            child: const Center(
+                              child: Text(
+                                'Login',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
                         )),

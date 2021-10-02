@@ -133,9 +133,12 @@ class RegisterPage extends StatelessWidget {
                                           .requestFocus(pswFocusNode);
                                     },
                                     validator: (v) {
-                                      return (v?.trim().length ?? 0) > 4
-                                          ? null
-                                          : '';
+                                      final isEmail = RegexUtil.isEmail(
+                                          v?.toString().trim() ?? '');
+                                      if (!isEmail) {
+                                        return 'Please enter your valid email';
+                                      }
+                                      return null;
                                     },
                                     onSaved: (value) => account = value ??
                                         'Please enter more than 4 characters',

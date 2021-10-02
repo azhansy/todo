@@ -63,7 +63,7 @@ class _SplashPageState extends State<SplashPage>
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Get.theme.primaryColor.withOpacity(0.1),
+        color: Get.theme.primaryColor.withOpacity(0.3),
         child: FadeTransition(
           opacity: animation,
           child: Center(

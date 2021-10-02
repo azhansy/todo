@@ -42,6 +42,7 @@ class DrawerWidget extends StatelessWidget {
                     NavigatorUtil.pushName(ThemePage.routeName);
                   },
                 ),
+                const Divider(),
                 ListTile(
                   title: const Text('About App'),
                   onTap: () {
