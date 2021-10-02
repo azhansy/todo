@@ -2,15 +2,8 @@
 
 A new todo application.
 
-## Getting Started
+#今天的todo让你充实每一天
+#明天的todo，使你更加优秀！
 
-This project is a starting point for a Flutter application.
+- [体验码](https://github.com/azhansy/todo/blob/master/release/scan.png)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

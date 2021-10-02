@@ -1,6 +1,8 @@
 import 'package:awesome_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:tobo/animation/FadeAnimation.dart';
+import 'package:tobo/net/index.dart';
+import 'package:tobo/page/home/main_page.dart';
 import 'package:tobo/page/login/register_page.dart';
 
 import '../../r.g.dart';
@@ -10,10 +12,23 @@ import '../../r.g.dart';
 /// @date 10/1/21
 /// describe:
 ///
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   static const String routeName = '/login/LoginPage';
 
   const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final GlobalKey _formKey = GlobalKey<FormState>();
+
+  final FocusNode pswFocusNode = FocusNode();
+
+  String account = '';
+
+  String psw = '';
 
   @override
   Widget build(BuildContext context) {
@@ -101,33 +116,61 @@ class LoginPage extends StatelessWidget {
                                     blurRadius: 20.0,
                                     offset: Offset(0, 10))
                               ]),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                padding: EdgeInsets.all(8.0),
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        bottom: BorderSide(
-                                            color: Colors.grey[100]!))),
-                                child: TextField(
-                                  decoration: InputDecoration(
+                          child: Form(
+                            key: _formKey,
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                  padding: const EdgeInsets.all(8.0),
+                                  decoration: BoxDecoration(
+                                      border: Border(
+                                          bottom: BorderSide(
+                                              color: Colors.grey[100]!))),
+                                  child: TextFormField(
+                                    decoration: InputDecoration(
                                       border: InputBorder.none,
-                                      hintText: 'Email or Phone number',
+                                      hintText: 'Email',
+                                      icon: const Icon(Icons.person),
                                       hintStyle:
-                                          TextStyle(color: Colors.grey[400])),
+                                          TextStyle(color: Colors.grey[400]),
+                                      //校验密码
+                                    ),
+                                    onEditingComplete: () {
+                                      FocusScope.of(context)
+                                          .requestFocus(pswFocusNode);
+                                    },
+                                    validator: (v) {
+                                      return (v?.trim().length ?? 0) > 4
+                                          ? null
+                                          : '';
+                                    },
+                                    onSaved: (value) => account = value ??
+                                        'Please enter more than 4 characters',
+                                  ),
                                 ),
-                              ),
-                              Container(
-                                padding: EdgeInsets.all(8.0),
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Password',
-                                      hintStyle:
-                                          TextStyle(color: Colors.grey[400])),
-                                ),
-                              )
-                            ],
+                                Container(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: TextFormField(
+                                    decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                        icon: const Icon(Icons.lock),
+                                        hintText: 'Password',
+                                        hintStyle:
+                                            TextStyle(color: Colors.grey[400])),
+                                    validator: (v) {
+                                      return (v?.trim().length ?? 0) > 4
+                                          ? null
+                                          : 'please Enter more than 4 characters';
+                                    },
+                                    onSaved: (value) => psw = value ?? '',
+                                    focusNode: pswFocusNode,
+                                    onEditingComplete: () {
+                                      _clickButton();
+                                    },
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         )),
                     const SizedBox(
@@ -173,5 +216,17 @@ class LoginPage extends StatelessWidget {
             ],
           ),
         ));
+  }
+
+  Future<void> _clickButton() async {
+    final FormState? currentState = _formKey.currentState as FormState?;
+    if (currentState?.validate() ?? false) {
+      currentState!.save();
+      //验证通过提交数据
+      final bool success = await AwesomeService.instance.login(account, psw);
+      if (success) {
+        NavigatorUtil.offAllNamed(MainPage.routeName);
+      }
+    }
   }
 }

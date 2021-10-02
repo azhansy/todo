@@ -109,7 +109,7 @@ class Colours {
   static const Color borderColor = Color(0xFFE8E8F0);
 }
 
-Map<String, Color> themeColorMap = {
+const Map<String, Color> themeColorMap = {
   'default': Colours.appMain,
   'gray': Colours.gray_33,
   'blue': Colors.blue,

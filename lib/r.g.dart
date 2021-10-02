@@ -98,6 +98,10 @@ class _R_Image_AssetResource {
   final background =
       const AssetResource("assets/images/background.png", packageName: null);
 
+  /// asset: assets/images/bg.png
+  // ignore: non_constant_identifier_names
+  final bg = const AssetResource("assets/images/bg.png", packageName: null);
+
   /// asset: assets/images/clock.png
   // ignore: non_constant_identifier_names
   final clock =
@@ -117,6 +121,15 @@ class _R_Image_AssetResource {
   // ignore: non_constant_identifier_names
   final light_2 =
       const AssetResource("assets/images/light-2.png", packageName: null);
+
+  /// asset: assets/images/logo.png
+  // ignore: non_constant_identifier_names
+  final logo = const AssetResource("assets/images/logo.png", packageName: null);
+
+  /// asset: assets/images/logo3x.png
+  // ignore: non_constant_identifier_names
+  final logo3x =
+      const AssetResource("assets/images/logo3x.png", packageName: null);
 }
 
 // ignore: camel_case_types
@@ -142,6 +155,12 @@ class _R_Image {
     return AssetImage(asset.background.keyName);
   }
 
+  /// asset: assets/images/bg.png
+  // ignore: non_constant_identifier_names
+  AssetImage bg() {
+    return AssetImage(asset.bg.keyName);
+  }
+
   /// asset: assets/images/clock.png
   // ignore: non_constant_identifier_names
   AssetImage clock() {
@@ -164,6 +183,18 @@ class _R_Image {
   // ignore: non_constant_identifier_names
   AssetImage light_2() {
     return AssetImage(asset.light_2.keyName);
+  }
+
+  /// asset: assets/images/logo.png
+  // ignore: non_constant_identifier_names
+  AssetImage logo() {
+    return AssetImage(asset.logo.keyName);
+  }
+
+  /// asset: assets/images/logo3x.png
+  // ignore: non_constant_identifier_names
+  AssetImage logo3x() {
+    return AssetImage(asset.logo3x.keyName);
   }
 }
 

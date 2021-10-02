@@ -21,14 +21,28 @@ dependency_overrides:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_native_splash: "^1.1.7+1"
+  flutter_launcher_icons: "^0.9.0"
+flutter_native_splash:
+  image: assets/images/logo3x.png
+  color: 8f93fb
+  fill: false
+flutter_icons:
+  image_path: assets/images/logo.png
+  remove_alpha_ios: true
+  android: true
+  ios: true
 flutter:
   uses-material-design: true
   assets:
   - assets/images/background.png
+  - assets/images/bg.png
   - assets/images/clock.png
   - assets/images/ic_splash.png
   - assets/images/light-1.png
   - assets/images/light-2.png
+  - assets/images/logo.png
+  - assets/images/logo3x.png
   - ".env"
 flr:
   core_version: 3.2.0

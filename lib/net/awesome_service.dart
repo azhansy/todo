@@ -40,6 +40,19 @@ class AwesomeService extends BaseRepository {
       Application.instance.setAccount(bmobUser);
     });
   }
+  Future<bool> saveContent(String account, String psw) async {
+    Get.loading();
+    final bmobUser = BmobUser();
+    bmobUser.username = account;
+    bmobUser.password = psw;
+    return _doing(() async {
+      final BmobRegistered user = await bmobUser.register();
+      bmobUser.sessionToken = user.sessionToken;
+      bmobUser.createdAt = user.createdAt;
+      bmobUser.objectId = user.objectId;
+      Application.instance.setAccount(bmobUser);
+    });
+  }
 
   Future<bool> _doing(Function function) async {
     try {

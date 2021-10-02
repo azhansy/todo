@@ -31,7 +31,7 @@ class _SplashPageState extends State<SplashPage>
     _animation = Tween(begin: 0.0, end: 1.0).animate(_controller);
     _animation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        NavigatorUtil.pushName(MainPage.routeName);
+        NavigatorUtil.offAllNamed(MainPage.routeName);
       }
     });
     _controller.forward();
@@ -45,17 +45,29 @@ class _SplashPageState extends State<SplashPage>
 
   @override
   Widget build(BuildContext context) {
-    return FadeTransition(
-      opacity: _animation,
-      // child: Image.network(
-      //   'https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1566890831&di=297a62df216c392465e93f539d9a9121&src=http://2a.zol-img.com.cn/product/73/288/ceGwVNogx6HSE.jpg',
-      //   scale: 1.5,
-      //   fit: BoxFit.cover,
-      // ),
-      child: Image.asset(
-        R.image.asset.ic_splash.assetName,
-        scale: 1.2,
-        fit: BoxFit.cover,
+    return Scaffold(
+      backgroundColor: Get.theme.primaryColor.withOpacity(0.5),
+      body: FadeTransition(
+        opacity: _animation,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'TODO',
+                style: 18.textStyle(Colors.white),
+              ),
+              30.sizedBoxH,
+              Image.asset(
+                R.image.asset.logo.assetName,
+                scale: 1.2,
+                width: 60.w,
+                height: 60.h,
+                fit: BoxFit.cover,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
