@@ -103,6 +103,11 @@ class _R_Image_AssetResource {
   final clock =
       const AssetResource("assets/images/clock.png", packageName: null);
 
+  /// asset: assets/images/ic_splash.png
+  // ignore: non_constant_identifier_names
+  final ic_splash =
+      const AssetResource("assets/images/ic_splash.png", packageName: null);
+
   /// asset: assets/images/light-1.png
   // ignore: non_constant_identifier_names
   final light_1 =
@@ -141,6 +146,12 @@ class _R_Image {
   // ignore: non_constant_identifier_names
   AssetImage clock() {
     return AssetImage(asset.clock.keyName);
+  }
+
+  /// asset: assets/images/ic_splash.png
+  // ignore: non_constant_identifier_names
+  AssetImage ic_splash() {
+    return AssetImage(asset.ic_splash.keyName);
   }
 
   /// asset: assets/images/light-1.png

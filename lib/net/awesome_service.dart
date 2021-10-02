@@ -1,7 +1,8 @@
 import 'package:awesome_core/core.dart';
+import 'package:data_plugin/bmob/response/bmob_error.dart';
+import 'package:data_plugin/bmob/response/bmob_registered.dart';
 import 'package:data_plugin/bmob/table/bmob_user.dart';
 import 'package:tobo/common/application.dart';
-import 'package:tobo/res/index.dart';
 
 import 'base_repository.dart';
 
@@ -20,14 +21,34 @@ class AwesomeService extends BaseRepository {
     final bmobUser = BmobUser();
     bmobUser.username = account;
     bmobUser.password = psw;
-    try {
+    return _doing(() async {
       final user = await bmobUser.login();
       Application.instance.setAccount(user);
+    });
+  }
+
+  Future<bool> register(String account, String psw) async {
+    Get.loading();
+    final bmobUser = BmobUser();
+    bmobUser.username = account;
+    bmobUser.password = psw;
+    return _doing(() async {
+      final BmobRegistered user = await bmobUser.register();
+      bmobUser.sessionToken = user.sessionToken;
+      bmobUser.createdAt = user.createdAt;
+      bmobUser.objectId = user.objectId;
+      Application.instance.setAccount(bmobUser);
+    });
+  }
+
+  Future<bool> _doing(Function function) async {
+    try {
+      await function();
       Get.dismiss();
       return true;
     } catch (e) {
       Get.dismiss();
-      Ids.logoutFail.str().toast();
+      BmobError.convert(e)?.error?.toast();
       return false;
     }
   }

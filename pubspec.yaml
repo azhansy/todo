@@ -14,9 +14,8 @@ dependencies:
     git:
       url: https://github.com/azhansy/bmob-flutter-sdk.git
       path: data_plugin
-  #flr init f;r run
   r_dart_library: 0.4.0-nullsafety.0
-  simple_animations: ^4.0.0
+  simple_animations: "^4.0.0"
 dependency_overrides:
   flutter_svg: "^0.22.0"
 dev_dependencies:
@@ -25,15 +24,16 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/background.png
-    - assets/images/clock.png
-    - assets/images/light-1.png
-    - assets/images/light-2.png
-    - ".env"
+  - assets/images/background.png
+  - assets/images/clock.png
+  - assets/images/ic_splash.png
+  - assets/images/light-1.png
+  - assets/images/light-2.png
+  - ".env"
 flr:
   core_version: 3.2.0
   dartfmt_line_length: 80
   assets:
-    - assets/images
-    - ".env"
+  - assets/images
+  - ".env"
   fonts: []

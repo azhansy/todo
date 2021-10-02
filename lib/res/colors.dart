@@ -4,8 +4,8 @@ import 'package:awesome_core/ext/screen_ext.dart';
 import 'package:flutter/material.dart';
 
 class Colours {
-  static const Color appMain = Colors.blue;
-  static const Color app_main_2 = Colors.blueAccent;
+  static const Color appMain = Color.fromRGBO(143, 148, 251, 1);
+  static const Color app_main_2 = Color.fromRGBO(143, 148, 251, .6);
   static const Color color_ffde49 = Color(0xFFFFDE49);
   static const Color main_line_color = Color(0xFFFFE4A2);
   static const Color bg_color = Color(0xFFF6F6FA);
