@@ -1,8 +1,11 @@
 import 'package:awesome_core/core.dart';
+import 'package:data_plugin/bmob/bmob_query.dart';
 import 'package:data_plugin/bmob/response/bmob_error.dart';
 import 'package:data_plugin/bmob/response/bmob_registered.dart';
+import 'package:data_plugin/bmob/response/bmob_saved.dart';
 import 'package:data_plugin/bmob/table/bmob_user.dart';
 import 'package:tobo/common/application.dart';
+import 'package:tobo/page/home/model/tobo.dart';
 
 import 'base_repository.dart';
 
@@ -16,53 +19,78 @@ class AwesomeService extends BaseRepository {
 
   /// 登录
   /*Future<BmobUser>*/
-  Future<bool> login(String account, String psw) async {
+  Future<BmobUser?> login(String account, String psw) async {
     Get.loading();
     final bmobUser = BmobUser();
     bmobUser.username = account;
     bmobUser.password = psw;
-    return _doing(() async {
+    return _doing<BmobUser>(() async {
       final user = await bmobUser.login();
       Application.instance.setAccount(user);
+      return user;
     });
   }
 
-  Future<bool> register(String account, String psw) async {
+  Future<BmobUser?> register(String account, String psw) async {
     Get.loading();
     final bmobUser = BmobUser();
     bmobUser.username = account;
     bmobUser.password = psw;
-    return _doing(() async {
+    return _doing<BmobUser>(() async {
       final BmobRegistered user = await bmobUser.register();
       bmobUser.sessionToken = user.sessionToken;
       bmobUser.createdAt = user.createdAt;
       bmobUser.objectId = user.objectId;
       Application.instance.setAccount(bmobUser);
-    });
-  }
-  Future<bool> saveContent(String account, String psw) async {
-    Get.loading();
-    final bmobUser = BmobUser();
-    bmobUser.username = account;
-    bmobUser.password = psw;
-    return _doing(() async {
-      final BmobRegistered user = await bmobUser.register();
-      bmobUser.sessionToken = user.sessionToken;
-      bmobUser.createdAt = user.createdAt;
-      bmobUser.objectId = user.objectId;
-      Application.instance.setAccount(bmobUser);
+      return bmobUser;
     });
   }
 
-  Future<bool> _doing(Function function) async {
+  Future<Tobo?> saveContent(String content) async {
+    Get.loading();
+    final tobo = Tobo(content);
+    return _doing<Tobo>(() async {
+      final BmobSaved saved = await tobo.save();
+      return tobo;
+    });
+  }
+
+  ///done 0 未出来、1处理
+  Future<Tobo?> updateDone(Tobo tobo) async {
+    print('dashu, tobo=${tobo.getParams()}');
+
+    Get.loading();
+    return _doing<Tobo>(() async {
+      await tobo.update();
+      return tobo;
+    });
+  }
+
+  Future<List<Tobo>?> getTodoList({int page = 0}) async {
+    // Get.loading();
+    return _doing<List<Tobo>>(
+      () async {
+        final BmobQuery<Tobo> query = BmobQuery();
+        query.addWhereEqualTo('done', 0);
+        query.addWhereEqualTo('author', Application.instance.getBmobUser());
+        //设置返回条数
+        query.setLimit(10);
+        final List<dynamic>? data = await query.queryObjects();
+        final List<Tobo>? tobos = data?.map((i) => Tobo.fromJson(i)).toList();
+        return tobos;
+      },
+    );
+  }
+
+  Future<T?> _doing<T>(Function function) async {
     try {
-      await function();
+      final T result = await function();
       Get.dismiss();
-      return true;
+      return result;
     } catch (e) {
       Get.dismiss();
       BmobError.convert(e)?.error?.toast();
-      return false;
+      return null;
     }
   }
 }

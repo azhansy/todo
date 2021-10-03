@@ -1,10 +1,10 @@
 import 'package:awesome_core/core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:tobo/page/login/widget/drawer_widget.dart';
 
 import 'controller/main_controller.dart';
 import 'input_page.dart';
-import 'model/tobo.dart';
 
 ///
 /// @author dashu
@@ -31,18 +31,7 @@ class _MainPageState extends State<MainPage> {
         height: double.infinity,
         width: double.infinity,
         color: Get.theme.primaryColor.withOpacity(0.1),
-        child: Obx(() => Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: _mainController.list
-                  .map((element) => Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          element.content,
-                          style: 20.textStyle(Colors.black),
-                        ),
-                      ))
-                  .toList(),
-            )),
+        child: _buildList(context),
       ),
       drawer: const DrawerWidget(),
       floatingActionButton: FloatingActionButton(
@@ -50,7 +39,7 @@ class _MainPageState extends State<MainPage> {
           final String? content =
               await NavigatorUtil.pushName(InputPage.routeName);
           if (!TextUtil.isEmpty(content)) {
-            _mainController.addTobo(Tobo(content!));
+            _mainController.addTobo(content!);
           }
         },
         child: const Icon(
@@ -58,6 +47,48 @@ class _MainPageState extends State<MainPage> {
           color: Colors.white,
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+    );
+  }
+
+  Widget _buildList(BuildContext context) {
+    return RefreshWidget(
+      child: Obx(() => ListView.separated(
+            itemBuilder: (BuildContext context, int index) {
+              return Slidable(
+                key: ValueKey(index),
+                endActionPane: ActionPane(
+                  motion: const ScrollMotion(),
+                  children: [
+                    SlidableAction(
+                      flex: 2,
+                      onPressed: (context) {
+                        _mainController.updateToboDone(index);
+                      },
+                      backgroundColor: Get.theme.primaryColor,
+                      foregroundColor: Colors.white,
+                      icon: Icons.done,
+                      label: 'Done',
+                    ),
+                    // SlidableAction(
+                    //   onPressed: (context) {},
+                    //   backgroundColor: Colors.red,
+                    //   foregroundColor: Colors.white,
+                    //   icon: Icons.delete,
+                    //   label: 'Delete',
+                    // ),
+                  ],
+                ),
+                child: ListTile(
+                  title: Text(_mainController.list[index].content),
+                ),
+              );
+            },
+            itemCount: _mainController.list.length,
+            separatorBuilder: (BuildContext context, int index) {
+              return const Divider();
+            },
+          )),
     );
   }
 }

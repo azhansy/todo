@@ -1,4 +1,5 @@
 import 'package:awesome_core/core.dart';
+import 'package:data_plugin/bmob/table/bmob_user.dart';
 import 'package:flutter/material.dart';
 import 'package:tobo/animation/FadeAnimation.dart';
 import 'package:tobo/net/awesome_service.dart';
@@ -211,10 +212,9 @@ class RegisterPage extends StatelessWidget {
     if (currentState?.validate() ?? false) {
       currentState!.save();
       //验证通过提交数据
-      final bool success = await AwesomeService.instance.register(account, psw);
-      if (success) {
-        // await StoreUtil.loadDict();
-        // await StoreUtil.loadSubsystem();
+      final BmobUser? user =
+          await AwesomeService.instance.register(account, psw);
+      if (null != user) {
         NavigatorUtil.offAllNamed(MainPage.routeName);
       }
     }

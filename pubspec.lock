@@ -179,11 +179,9 @@ packages:
   data_plugin:
     dependency: "direct main"
     description:
-      path: data_plugin
-      ref: HEAD
-      resolved-ref: "031f4201053e31ff341f0b7657478f54c3d4cca4"
-      url: "https://github.com/azhansy/bmob-flutter-sdk.git"
-    source: git
+      path: "../../plugin/bmob-flutter-sdk/data_plugin"
+      relative: true
+    source: path
     version: "0.0.18"
   decimal:
     dependency: transitive
@@ -391,6 +389,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.3"
+  flutter_slidable:
+    dependency: "direct main"
+    description:
+      name: flutter_slidable
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0-dev.9"
   flutter_spinkit:
     dependency: transitive
     description:

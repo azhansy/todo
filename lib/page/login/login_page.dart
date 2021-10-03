@@ -1,4 +1,5 @@
 import 'package:awesome_core/core.dart';
+import 'package:data_plugin/bmob/table/bmob_user.dart';
 import 'package:flutter/material.dart';
 import 'package:tobo/animation/FadeAnimation.dart';
 import 'package:tobo/net/index.dart';
@@ -224,8 +225,8 @@ class _LoginPageState extends State<LoginPage> {
     if (currentState?.validate() ?? false) {
       currentState!.save();
       //验证通过提交数据
-      final bool success = await AwesomeService.instance.login(account, psw);
-      if (success) {
+      final BmobUser? user = await AwesomeService.instance.login(account, psw);
+      if (user != null) {
         NavigatorUtil.offAllNamed(MainPage.routeName);
       }
     }
