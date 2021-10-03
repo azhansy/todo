@@ -4,6 +4,8 @@
 currentPath=$(pwd)
 echo "$currentPath"
 
+flutter clean
+
 flutter build apk
 
 sleep 2s

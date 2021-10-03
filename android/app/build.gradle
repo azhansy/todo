@@ -45,11 +45,13 @@ android {
         applicationId "com.azhansy.tobo"
         minSdkVersion 25
         targetSdkVersion 30
+        multiDexEnabled true
+
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         ndk {
             // 设置支持的SO库架构，'arm64-v8a'支持64位
-            abiFilters 'armeabi-v7a'//, 'arm64-v8a', 'x86', 'x86_64'
+            abiFilters 'armeabi-v7a'
         }
     }
 
@@ -61,6 +63,22 @@ android {
                 // 设置支持的SO库架构，'arm64-v8a'支持64位
                 abiFilters 'armeabi-v7a'
             }
+        }
+
+        debug {
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig signingConfigs.debug
+            ndk {
+                // 设置支持的SO库架构，'arm64-v8a'支持64位
+                abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+            }
+        }
+    }
+
+    //修改输出apk的文件名
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.outputFileName = "todo-v${defaultConfig.versionName}-c${defaultConfig.versionCode}-${output.name}.apk"
         }
     }
 }

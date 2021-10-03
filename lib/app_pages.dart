@@ -29,6 +29,7 @@ class AppPages {
     GetPage<Widget>(
       name: InputPage.routeName,
       page: () => const InputPage(),
+      transition: Transition.noTransition,
     ),
     GetPage<Widget>(
       name: AboutPage.routeName,

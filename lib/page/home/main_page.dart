@@ -60,23 +60,24 @@ class _MainPageState extends State<MainPage> {
                 endActionPane: ActionPane(
                   motion: const ScrollMotion(),
                   children: [
+                    // SlidableAction(
+                    //   onPressed: (context) {
+                    //   },
+                    //   foregroundColor: Colors.white,
+                    //   backgroundColor: Get.theme.primaryColor,
+                    //   icon: Icons.done,
+                    //   label: 'Edit',
+                    // ),
                     SlidableAction(
-                      flex: 2,
+                      flex: 1,
                       onPressed: (context) {
                         _mainController.updateToboDone(index);
                       },
-                      backgroundColor: Get.theme.primaryColor,
+                      backgroundColor: Colors.red,
                       foregroundColor: Colors.white,
-                      icon: Icons.done,
+                      icon: Icons.delete,
                       label: 'Done',
                     ),
-                    // SlidableAction(
-                    //   onPressed: (context) {},
-                    //   backgroundColor: Colors.red,
-                    //   foregroundColor: Colors.white,
-                    //   icon: Icons.delete,
-                    //   label: 'Delete',
-                    // ),
                   ],
                 ),
                 child: ListTile(
@@ -86,7 +87,11 @@ class _MainPageState extends State<MainPage> {
             },
             itemCount: _mainController.list.length,
             separatorBuilder: (BuildContext context, int index) {
-              return const Divider();
+              return Container(
+                height: 1,
+                margin: const EdgeInsets.symmetric(horizontal: 15),
+                color: Get.theme.primaryColor.withOpacity(0.1),
+              );
             },
           )),
     );

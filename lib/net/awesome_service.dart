@@ -46,9 +46,7 @@ class AwesomeService extends BaseRepository {
     });
   }
 
-  Future<Tobo?> saveContent(String content) async {
-    Get.loading();
-    final tobo = Tobo(content);
+  Future<Tobo?> saveContent(Tobo tobo) async {
     return _doing<Tobo>(() async {
       final BmobSaved saved = await tobo.save();
       return tobo;
@@ -58,8 +56,6 @@ class AwesomeService extends BaseRepository {
   ///done 0 未出来、1处理
   Future<Tobo?> updateDone(Tobo tobo) async {
     print('dashu, tobo=${tobo.getParams()}');
-
-    Get.loading();
     return _doing<Tobo>(() async {
       await tobo.update();
       return tobo;
