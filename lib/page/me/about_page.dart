@@ -40,7 +40,7 @@ class _AboutPageState extends State<AboutPage> {
             ),
             Center(
               child: Text(
-                '格比飞勇@出品',
+                '格比飞勇@出品V${BaseConfig.VERSION_CODE}',
                 style: 10.textStyle(Colours.gray_99),
               ),
             ),
