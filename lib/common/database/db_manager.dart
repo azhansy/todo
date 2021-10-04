@@ -92,21 +92,22 @@ class DbManager {
   }
 
   Future<void> deleteTobo(Tobo tobo) async {
-    print('delete =');
-    //要清除表数据，避免只删了栈顶的单条数据
-    await _database.rawQuery(
-        'DELETE FROM $_dbTableAccount WHERE objectId = ?', [tobo.objectId!]);
+    debugPrint('openDatabase deleteTobo = ${tobo.toString()}');
+    // await _database.rawQuery(
+    //     'DELETE FROM $_dbTableAccount WHERE objectId = ?', [tobo.objectId]);
+    final int count = await _database.delete(_dbTableAccount,
+        where: 'objectId = ?', whereArgs: [tobo.objectId]);
+    debugPrint('openDatabase deleteTobo count= $count');
   }
+
   Future<void> deleteAllTobo() async {
-    print('delete all=');
+    debugPrint('delete all=');
     //要清除表数据，避免只删了栈顶的单条数据
-    await _database.rawQuery(
-        'DELETE FROM $_dbTableAccount');
+    await _database.rawQuery('DELETE FROM $_dbTableAccount');
   }
 
   Future<int> saveOrUpdateTobo(Tobo info) async {
-    print('openDatabase saveOrUpdateAccount = ' + info.toString());
-    print('openDatabase info.objectId = ${info.objectId}');
+    debugPrint('openDatabase saveOrUpdateAccount = ' + info.toString());
 
     final rawQuery = await _database.rawQuery(
         'SELECT * FROM $_dbTableAccount WHERE objectId = ?', [info.objectId!]);
@@ -115,8 +116,8 @@ class DbManager {
 
     if (rawQuery.isEmpty) {
       result = await _database.rawInsert(
-          'INSERT INTO $_dbTableAccount(createdAt, updatedAt, content, done) VALUES(?, ?, ?, ?)',
-          [info.createdAt, info.updatedAt, info.content, info.done]);
+          'INSERT INTO $_dbTableAccount(objectId, createdAt, updatedAt, content, done) VALUES(?, ?, ?, ?, ?)',
+          [info.objectId, info.createdAt, info.updatedAt, info.content, info.done]);
     } else {
       result = await _database.rawUpdate(
           'UPDATE $_dbTableAccount SET createdAt = ?,updatedAt = ?,content = ?,done = ?',

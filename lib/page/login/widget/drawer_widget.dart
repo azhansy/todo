@@ -5,6 +5,7 @@ import 'package:tobo/common/application.dart';
 import 'package:tobo/page/login/login_page.dart';
 import 'package:tobo/page/me/about_page.dart';
 import 'package:tobo/page/me/theme_page.dart';
+import 'package:tobo/res/colors.dart';
 
 ///
 /// @author dashu
@@ -19,40 +20,59 @@ class DrawerWidget extends StatelessWidget {
     return Drawer(
       child: Column(
         children: [
-          Expanded(
-            child: ListView(
-              padding: EdgeInsets.zero,
-              shrinkWrap: true,
-              children: [
-                DrawerHeader(
-                  decoration: BoxDecoration(
-                    color: Get.theme.primaryColor,
-                  ),
-                  child: Center(
-                    child: Text(
-                      'Hello, ${Application.instance.getBmobUser()?.username ?? 'User'}',
-                      style: 15.textStyle(Colors.white),
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: Get.theme.primaryColor,
+            ),
+            child: SizedBox(
+              width: double.infinity,
+              child: Stack(
+                children: [
+                  Positioned(
+                    bottom: 10.0,
+                    left: 0.0,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          Application.instance.getBmobUser()?.username ??
+                              'User',
+                          style: 15.textStyle(Colours.color_white),
+                        ),
+                        Text(
+                          _getHi(),
+                          style: 8.textStyle(Colours.color_666666),
+                        ),
+                      ],
                     ),
                   ),
-                ),
-                ListTile(
-                  title: const Text('Theme Color'),
-                  onTap: () {
-                    NavigatorUtil.pop();
-                    NavigatorUtil.pushName(ThemePage.routeName);
-                  },
-                ),
-                const Divider(),
-                ListTile(
-                  title: const Text('About App'),
-                  onTap: () {
-                    NavigatorUtil.pop();
-                    NavigatorUtil.pushName(AboutPage.routeName);
-                  },
-                ),
-              ],
+                  const Positioned(
+                    top: 10.0,
+                    left: 0.0,
+                    child: CircleAvatar(
+                      child: Icon(Icons.lock_clock),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
+          ListTile(
+            title: const Text('Theme Color'),
+            onTap: () {
+              NavigatorUtil.pop();
+              NavigatorUtil.pushName(ThemePage.routeName);
+            },
+          ),
+          const Divider(),
+          ListTile(
+            title: const Text('About App'),
+            onTap: () {
+              NavigatorUtil.pop();
+              NavigatorUtil.pushName(AboutPage.routeName);
+            },
+          ),
+          const Spacer(),
           Padding(
             padding: const EdgeInsets.all(30.0),
             child: 'Exit'.buttonElev(() {
@@ -69,5 +89,23 @@ class DrawerWidget extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String _getHi() {
+    final DateTime tmCur = DateTime.now();
+
+    if (tmCur.hour < 8 || tmCur.hour > 23) {
+      //凌晨
+      return '夜已深，今天辛苦了，早点休息吧';
+    }
+    if (tmCur.hour < 8 || tmCur.hour > 18) {
+      //晚上
+      return 'Good Evening';
+    } else if (tmCur.hour >= 8 && tmCur.hour < 12) {
+      //上午
+      return 'Good Morning';
+    }
+    //下午
+    return 'Good Afternoon';
   }
 }

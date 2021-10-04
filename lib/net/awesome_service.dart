@@ -27,6 +27,7 @@ class AwesomeService extends BaseRepository {
     bmobUser.password = psw;
     return _doing<BmobUser>(() async {
       final user = await bmobUser.login();
+      BaseConfig.accountName.writeStorage(account);
       Application.instance.setAccount(user);
       return user;
     });
@@ -42,6 +43,7 @@ class AwesomeService extends BaseRepository {
       bmobUser.sessionToken = user.sessionToken;
       bmobUser.createdAt = user.createdAt;
       bmobUser.objectId = user.objectId;
+      BaseConfig.accountName.writeStorage(account);
       Application.instance.setAccount(bmobUser);
       return bmobUser;
     });

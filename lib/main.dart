@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:tobo/app_pages.dart';
 
+import 'common/application.dart';
 import 'common/database/db_manager.dart';
 import 'res/colors.dart';
 import 'res/translation_service.dart';
@@ -17,6 +18,7 @@ void main() {
     () async {
       await initBmob();
       await DbManager.instance.init();
+      await Application.instance.init();
       runApp(const MyApp());
     },
   );

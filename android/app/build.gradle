@@ -26,6 +26,7 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
+
     compileSdkVersion 30
 
     compileOptions {
@@ -55,10 +56,16 @@ android {
         }
     }
 
+    signingConfigs {
+        release {
+            setSigningProperties()
+        }
+
+    }
     buildTypes {
         release {
             // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             ndk {
                 // 设置支持的SO库架构，'arm64-v8a'支持64位
                 abiFilters 'armeabi-v7a'
@@ -67,7 +74,7 @@ android {
 
         debug {
             // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             ndk {
                 // 设置支持的SO库架构，'arm64-v8a'支持64位
                 abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
@@ -82,6 +89,26 @@ android {
         }
     }
 }
+
+def setSigningProperties(){
+    def propFile = file('../key.properties')
+    if (propFile.canRead()){
+        def Properties props = new Properties()
+        props.load(new FileInputStream(propFile))
+        if (props!=null && props.containsKey('STORE_FILE') && props.containsKey('STORE_PASSWORD') &&props.containsKey('KEY_ALIAS') && props.containsKey('KEY_PASSWORD')) {
+            android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
+            android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
+            android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
+            android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
+        } else {
+            throw new Exception("some key missing")
+        }
+    }else {
+        throw new Exception("keystore.properties not found:" + propFile.absolutePath)
+
+    }
+}
+
 
 flutter {
     source '../..'

@@ -26,4 +26,9 @@ class Tobo extends BmobObject {
     map[Bmob.BMOB_PROPERTY_OBJECT_ID] = objectId;
     return map;
   }
+
+  @override
+  String toString() {
+    return 'Tobo{content: $content, done: $done, objectId: $objectId}';
+  }
 }

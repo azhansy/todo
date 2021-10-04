@@ -34,10 +34,7 @@ class Application {
     }
   }
 
-  static Application _getInstance() {
-    _instance ??= Application._internal();
-    return _instance!;
-  }
+  static Application _getInstance() => _instance ??= Application._internal();
 
   Future<void> saveBmobUser(BmobUser account, {bool save = true}) async {
     _account = account;

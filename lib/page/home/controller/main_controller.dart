@@ -14,8 +14,8 @@ class MainController extends BaseController {
 
   Future<void> addTobo(String content) async {
     final tempTobo = Tobo(content);
-    tempTobo.setObjectId(
-        DateTime.now().toString() + Random().nextInt(10000).toString());
+    tempTobo.setObjectId(Md5Util.generateMd5(
+        DateTime.now().toString() + Random().nextInt(10000).toString()));
     list.add(tempTobo);
     DbManager.instance.saveOrUpdateTobo(tempTobo);
     await AwesomeService.instance.saveContent(tempTobo);
@@ -25,7 +25,7 @@ class MainController extends BaseController {
     final tobo = list[index];
     tobo.done = 1;
     list.remove(tobo);
-    DbManager.instance.deleteTobo(tobo);
+    await DbManager.instance.deleteTobo(tobo);
     await AwesomeService.instance.updateDone(tobo);
   }
 
@@ -41,12 +41,33 @@ class MainController extends BaseController {
     list.value = listDb;
     final List<Tobo> listNet =
         await AwesomeService.instance.getTodoList() ?? [];
+
+    ///获取未备份的本地数据
+    listDb.removeWhere((element) {
+      bool same = false;
+      for (final elementNet in listNet) {
+        same = elementNet.objectId == element.objectId;
+        if (same) {
+          break;
+        }
+      }
+      return false;
+    });
+    final temp = listDb;
+    listNet.addAll(temp);
     list.value = listNet;
+
+    /// 清除本地数据库
     DbManager.instance.deleteAllTobo();
 
     ///保存到数据库
     listNet.forEach((element) {
       DbManager.instance.saveOrUpdateTobo(element);
+    });
+
+    ///本地的同步到服务器
+    temp.forEach((element) {
+      AwesomeService.instance.updateDone(element);
     });
   }
 

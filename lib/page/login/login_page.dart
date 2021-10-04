@@ -27,10 +27,20 @@ class _LoginPageState extends State<LoginPage> {
   final GlobalKey _formKey = GlobalKey<FormState>();
 
   final FocusNode pswFocusNode = FocusNode();
+  final TextEditingController accountController = TextEditingController();
 
   String account = '';
 
   String psw = '';
+
+  @override
+  void initState() {
+    super.initState();
+    final String accoutSp = BaseConfig.accountName.readStorage() ?? '';
+    if (accoutSp.isNotEmpty) {
+      accountController.text = accoutSp;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -137,6 +147,7 @@ class _LoginPageState extends State<LoginPage> {
                                           TextStyle(color: Colors.grey[400]),
                                       //校验密码
                                     ),
+                                    controller: accountController,
                                     onEditingComplete: () {
                                       FocusScope.of(context)
                                           .requestFocus(pswFocusNode);

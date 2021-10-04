@@ -5,6 +5,7 @@ import 'package:data_plugin/bmob/table/bmob_object.dart';
 
 class Version extends BmobObject {
   int versionCode = 1;
+  int forceExit = 0;
   String androidLink = '';
   String iosLink = '';
   String title = '';
@@ -17,6 +18,7 @@ class Version extends BmobObject {
 
   Version.fromJson(Map<String, dynamic> json)
       : versionCode = json.asInt('versionCode'),
+        forceExit = json.asInt('forceExit'),
         androidLink = json.asString('androidLink'),
         title = json.asString('title'),
         content = json.asString('content'),
@@ -33,6 +35,7 @@ class Version extends BmobObject {
     map['androidLink'] = androidLink;
     map['iosLink'] = iosLink;
     map['title'] = title;
+    map['forceExit'] = forceExit;
     map['content'] = content;
     map[Bmob.BMOB_PROPERTY_OBJECT_ID] = objectId;
     return map;
