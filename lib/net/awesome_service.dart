@@ -4,9 +4,11 @@ import 'package:data_plugin/bmob/response/bmob_error.dart';
 import 'package:data_plugin/bmob/response/bmob_registered.dart';
 import 'package:data_plugin/bmob/response/bmob_saved.dart';
 import 'package:data_plugin/bmob/table/bmob_user.dart';
+import 'package:flutter/foundation.dart';
 import 'package:tobo/common/application.dart';
 import 'package:tobo/page/home/model/tobo.dart';
 import 'package:tobo/page/home/model/version.dart';
+import 'package:tobo/page/me/model/feedback_model.dart';
 
 import 'base_repository.dart';
 
@@ -50,15 +52,26 @@ class AwesomeService extends BaseRepository {
   }
 
   Future<Tobo?> saveContent(Tobo tobo) async {
+    debugPrint('dashu, saveContent=${tobo.toString()}');
+
     return _doing<Tobo>(() async {
       final BmobSaved saved = await tobo.save();
       return tobo;
     });
   }
 
+  Future<FeedbackModel?> feedbackContent(String content) async {
+    Get.loading();
+    final FeedbackModel feedback = FeedbackModel(content);
+    return _doing<FeedbackModel>(() async {
+      final BmobSaved saved = await feedback.save();
+      return feedback;
+    });
+  }
+
   ///done 0 未出来、1处理
   Future<Tobo?> updateDone(Tobo tobo) async {
-    print('dashu, tobo=${tobo.getParams()}');
+    debugPrint('dashu, tobo=${tobo.getParams()}');
     return _doing<Tobo>(() async {
       await tobo.update();
       return tobo;
@@ -104,6 +117,8 @@ class AwesomeService extends BaseRepository {
     } catch (e) {
       Get.dismiss();
       BmobError.convert(e)?.error?.toast();
+      debugPrint('dashu, error=${BmobError.convert(e)?.error}');
+
       return null;
     }
   }

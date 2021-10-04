@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:tobo/common/application.dart';
 import 'package:tobo/page/login/login_page.dart';
 import 'package:tobo/page/me/about_page.dart';
+import 'package:tobo/page/me/feedback_page.dart';
 import 'package:tobo/page/me/theme_page.dart';
 import 'package:tobo/res/colors.dart';
 
@@ -39,6 +40,7 @@ class DrawerWidget extends StatelessWidget {
                               'User',
                           style: 15.textStyle(Colours.color_white),
                         ),
+                        10.sizedBoxH,
                         Text(
                           _getHi(),
                           style: 8.textStyle(Colours.color_666666),
@@ -62,6 +64,14 @@ class DrawerWidget extends StatelessWidget {
             onTap: () {
               NavigatorUtil.pop();
               NavigatorUtil.pushName(ThemePage.routeName);
+            },
+          ),
+          const Divider(),
+          ListTile(
+            title: const Text('Feedback'),
+            onTap: () {
+              NavigatorUtil.pop();
+              NavigatorUtil.pushName(FeedbackPage.routeName);
             },
           ),
           const Divider(),

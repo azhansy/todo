@@ -14,6 +14,7 @@ class MainController extends BaseController {
 
   Future<void> addTobo(String content) async {
     final tempTobo = Tobo(content);
+    //本地数据库的id
     tempTobo.setObjectId(Md5Util.generateMd5(
         DateTime.now().toString() + Random().nextInt(10000).toString()));
     list.add(tempTobo);
@@ -41,6 +42,10 @@ class MainController extends BaseController {
     list.value = listDb;
     final List<Tobo> listNet =
         await AwesomeService.instance.getTodoList() ?? [];
+    if (listNet.isEmpty) {
+      return;
+    }
+    list.value = listNet;
 
     ///获取未备份的本地数据
     listDb.removeWhere((element) {
@@ -51,11 +56,11 @@ class MainController extends BaseController {
           break;
         }
       }
-      return false;
+      return same;
     });
+
+    ///剩余未同步的
     final temp = listDb;
-    listNet.addAll(temp);
-    list.value = listNet;
 
     /// 清除本地数据库
     DbManager.instance.deleteAllTobo();
@@ -64,11 +69,23 @@ class MainController extends BaseController {
     listNet.forEach((element) {
       DbManager.instance.saveOrUpdateTobo(element);
     });
+    debugPrint('dashu, temp sieze=${temp.length}');
 
     ///本地的同步到服务器
-    temp.forEach((element) {
-      AwesomeService.instance.updateDone(element);
-    });
+    if (temp.isNotEmpty) {
+      final tempListNet = <Tobo>[];
+      await Future.forEach<Tobo>(temp, (element) async {
+        debugPrint('dashu, temp tobo=${element.getParams()}');
+        final tobo = await AwesomeService.instance.saveContent(element);
+        if (null != tobo) {
+          debugPrint('dashu, temp add net =${element.getParams()}');
+          DbManager.instance.saveOrUpdateTobo(tobo);
+          tempListNet.add(tobo);
+        }
+      });
+      debugPrint('dashu, temp =====finish ');
+      list.addAll(tempListNet);
+    }
   }
 
   Future<void> checkVersion() async {
