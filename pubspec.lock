@@ -279,7 +279,7 @@ packages:
     description:
       path: data_plugin
       ref: HEAD
-      resolved-ref: "7e5caf826ff3052074feffacd6dfb33fb6218afe"
+      resolved-ref: "4b489dba3f2f50f9acdc8415fc1bc91438f39505"
       url: "https://github.com/azhansy/bmob-flutter-sdk.git"
     source: git
     version: "0.0.18"

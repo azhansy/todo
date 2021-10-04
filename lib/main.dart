@@ -40,6 +40,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return App(
+      key: const ValueKey('MyApp'),
       defaultThemeColor: Colours.appMain,
       getPages: AppPages.routes,
       initialRoute: AppPages.initial,

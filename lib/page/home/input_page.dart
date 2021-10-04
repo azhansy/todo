@@ -1,6 +1,9 @@
 import 'package:awesome_core/core.dart';
 import 'package:flutter/material.dart';
 
+import 'controller/main_controller.dart';
+import 'model/tobo.dart';
+
 ///
 /// @author dashu
 /// @date 10/2/21
@@ -17,6 +20,16 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   final controller = TextEditingController();
+  Tobo? _tobo;
+
+  @override
+  void initState() {
+    super.initState();
+    _tobo = Get.arguments;
+    if (null != _tobo) {
+      controller.text = _tobo!.content;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +40,7 @@ class _InputPageState extends State<InputPage> {
           onPressed: () => onSave(),
         )
       ],
+      title: null == _tobo ? 'Add todo' : 'Edit todo',
       body: Container(
         height: double.infinity,
         width: double.infinity,
@@ -52,7 +66,16 @@ class _InputPageState extends State<InputPage> {
   void onSave() {
     final content = controller.text.trim();
     if (content.isEmpty) {
-      'Please add your todo content'.toast();
+      'Please input your todo content'.toast();
+      return;
+    }
+
+    if (null != _tobo) {
+      final MainController _mainController = Get.put(MainController());
+      _tobo!.content = content;
+      _mainController.updateToboContent(_tobo!);
+      'Edit success'.toast();
+      NavigatorUtil.pop();
       return;
     }
 

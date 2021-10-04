@@ -56,6 +56,8 @@ class AwesomeService extends BaseRepository {
 
     return _doing<Tobo>(() async {
       final BmobSaved saved = await tobo.save();
+      tobo.objectId = saved.objectId;
+      tobo.createdAt = saved.createdAt;
       return tobo;
     });
   }

@@ -19,7 +19,13 @@ class MainController extends BaseController {
         DateTime.now().toString() + Random().nextInt(10000).toString()));
     list.add(tempTobo);
     DbManager.instance.saveOrUpdateTobo(tempTobo);
-    await AwesomeService.instance.saveContent(tempTobo);
+    final Tobo? tobo = await AwesomeService.instance.saveContent(tempTobo);
+    if (null != tobo) {
+      DbManager.instance.deleteTobo(tempTobo);
+      DbManager.instance.saveOrUpdateTobo(tobo);
+      list.remove(tempTobo);
+      list.add(tobo);
+    }
   }
 
   Future<void> updateToboDone(int index) async {
@@ -27,7 +33,26 @@ class MainController extends BaseController {
     tobo.done = 1;
     list.remove(tobo);
     await DbManager.instance.deleteTobo(tobo);
-    await AwesomeService.instance.updateDone(tobo);
+    //如果已经同步到服务器就删除；
+    if (!tobo.isNotUpload) {
+      await AwesomeService.instance.updateDone(tobo);
+    }
+  }
+
+  Future<void> updateToboContent(Tobo tobo) async {
+    final index =
+        list.indexWhere((element) => element.objectId == tobo.objectId);
+    debugPrint('dashu, update index=$index ');
+
+    if (index > -1) {
+      list.removeAt(index);
+      list.insert(index, tobo);
+      await DbManager.instance.saveOrUpdateTobo(tobo);
+      //如果已经同步到服务器就继续更新到服务器；
+      if (!tobo.isNotUpload) {
+        await AwesomeService.instance.updateDone(tobo);
+      }
+    }
   }
 
   @override
@@ -42,22 +67,12 @@ class MainController extends BaseController {
     list.value = listDb;
     final List<Tobo> listNet =
         await AwesomeService.instance.getTodoList() ?? [];
-    if (listNet.isEmpty) {
-      return;
+    if (listNet.isNotEmpty) {
+      list.value = listNet;
     }
-    list.value = listNet;
 
     ///获取未备份的本地数据
-    listDb.removeWhere((element) {
-      bool same = false;
-      for (final elementNet in listNet) {
-        same = elementNet.objectId == element.objectId;
-        if (same) {
-          break;
-        }
-      }
-      return same;
-    });
+    listDb.removeWhere((element) => !element.isNotUpload);
 
     ///剩余未同步的
     final temp = listDb;

@@ -11,6 +11,6 @@ flutter build apk
 sleep 2s
 
 #移动目录
-mv "$currentPath/build/app/outputs/flutter-apk/app-release.apk" "$currentPath/release/"
+mv "$currentPath"/build/app/outputs/apk/release/*.apk "$currentPath"/release/
 
 echo "==============End to Build==============="

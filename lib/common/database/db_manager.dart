@@ -3,6 +3,8 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:tobo/page/home/model/tobo.dart';
 
+import '../common_config.dart';
+
 class DbManager {
   //数据库版本号
   static const _dbVersion = 1;
@@ -79,7 +81,8 @@ class DbManager {
   }
 
   Future<List<Tobo>> getToboList() async {
-    final list = await _database.rawQuery('SELECT * FROM $_dbTableAccount');
+    final list = await _database.rawQuery(
+        'SELECT * FROM $_dbTableAccount limit ${CommonConfig.maxCount}');
     final List<Tobo> toboList = [];
     if (list.isNotEmpty) {
       for (final element in list) {
@@ -117,7 +120,13 @@ class DbManager {
     if (rawQuery.isEmpty) {
       result = await _database.rawInsert(
           'INSERT INTO $_dbTableAccount(objectId, createdAt, updatedAt, content, done) VALUES(?, ?, ?, ?, ?)',
-          [info.objectId, info.createdAt, info.updatedAt, info.content, info.done]);
+          [
+            info.objectId,
+            info.createdAt,
+            info.updatedAt,
+            info.content,
+            info.done
+          ]);
     } else {
       result = await _database.rawUpdate(
           'UPDATE $_dbTableAccount SET createdAt = ?,updatedAt = ?,content = ?,done = ?',

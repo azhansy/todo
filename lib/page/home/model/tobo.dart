@@ -17,6 +17,8 @@ class Tobo extends BmobObject {
     updatedAt = json.asString(Bmob.BMOB_PROPERTY_UPDATED_AT);
   }
 
+  bool get isNotUpload => createdAt == null || createdAt!.isEmpty;
+
   @override
   Map getParams() {
     final map = <String, dynamic>{};

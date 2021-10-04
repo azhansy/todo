@@ -5,8 +5,10 @@ import 'package:data_plugin/bmob/table/bmob_user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'database/db_manager.dart';
+
 class Application {
-  static Application get instance => _getInstance();
+  static Application get instance => _instance ??= Application._internal();
   static Application? _instance;
 
   //用来刷新数
@@ -33,8 +35,6 @@ class Application {
       _account = null;
     }
   }
-
-  static Application _getInstance() => _instance ??= Application._internal();
 
   Future<void> saveBmobUser(BmobUser account, {bool save = true}) async {
     _account = account;
@@ -68,6 +68,7 @@ class Application {
     if (null != _account) {
       // _account!.delete();
       SpUtil.putString('user', '');
+      await DbManager.instance.deleteAllTobo();
       _account = null;
       staticBmobUser = null;
       // notifyListeners();
@@ -78,8 +79,6 @@ class Application {
     context ??= Get.context;
     if (context != null) {
       clearAuthorization();
-      // Navigator.pushNamedAndRemoveUntil(
-      //     context, LoginPage.routeName, (route) => false);
     }
   }
 
