@@ -18,7 +18,7 @@ void main() {
     () async {
       await initBmob();
       await DbManager.instance.init();
-      await Application.instance.init();
+      Application.instance.init();
       runApp(const MyApp());
     },
   );

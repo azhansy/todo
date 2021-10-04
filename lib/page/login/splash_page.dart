@@ -32,7 +32,7 @@ class _SplashPageState extends State<SplashPage>
     super.initState();
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 4),
     )..addListener(() => setState(() {}));
     animationController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
@@ -64,29 +64,31 @@ class _SplashPageState extends State<SplashPage>
         width: double.infinity,
         height: double.infinity,
         color: Get.theme.primaryColor.withOpacity(0.3),
-        child: FadeTransition(
-          opacity: animation,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'TODO',
-                  style: 18.textStyle(Colors.white),
-                ),
-                30.sizedBoxH,
-                Center(
-                  child: Transform(
-                    transform: Matrix4.translation(_shake()),
-                    child: SvgPicture.asset(
-                      R.svg.asset.logo.assetName,
-                      color: Colors.white,
-                      width: 58.w,
-                      height: 58.h,
+        child: Center(
+          child: FadeTransition(
+            opacity: animation,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'TODO',
+                    style: 18.textStyle(Colors.white),
+                  ),
+                  30.sizedBoxH,
+                  Center(
+                    child: Transform(
+                      transform: Matrix4.translation(_shake()),
+                      child: SvgPicture.asset(
+                        R.svg.asset.logo.assetName,
+                        color: Colors.white,
+                        width: 58.w,
+                        height: 58.h,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

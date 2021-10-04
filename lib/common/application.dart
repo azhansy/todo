@@ -8,8 +8,10 @@ import 'package:flutter/material.dart';
 import 'database/db_manager.dart';
 
 class Application {
-  static Application get instance => _instance ??= Application._internal();
+  static Application get instance => _instance ??= Application._();
   static Application? _instance;
+
+  Application._();
 
   //用来刷新数
   BmobUser? _account;
@@ -19,12 +21,8 @@ class Application {
 
   static String utma = '';
 
-  Future<Application?> init() async {
+  void init() {
     utma = BaseConfig.IMEI;
-    return this;
-  }
-
-  Application._internal() {
     // 初始化
     final String user = SpUtil.getString('user') ?? '';
     if (user.isNotEmpty) {
