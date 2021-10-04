@@ -6,6 +6,7 @@ import 'package:data_plugin/bmob/response/bmob_saved.dart';
 import 'package:data_plugin/bmob/table/bmob_user.dart';
 import 'package:tobo/common/application.dart';
 import 'package:tobo/page/home/model/tobo.dart';
+import 'package:tobo/page/home/model/version.dart';
 
 import 'base_repository.dart';
 
@@ -74,6 +75,21 @@ class AwesomeService extends BaseRepository {
         final List<dynamic>? data = await query.queryObjects();
         final List<Tobo>? tobos = data?.map((i) => Tobo.fromJson(i)).toList();
         return tobos;
+      },
+    );
+  }
+
+  Future<Version?> checkVersion() async {
+    // Get.loading();
+    return _doing<Version>(
+      () async {
+        final BmobQuery<Version> query = BmobQuery();
+        //设置返回条数
+        query.setLimit(1);
+        final List<dynamic>? data = await query.queryObjects();
+        final List<Version>? tobos =
+            data?.map((i) => Version.fromJson(i)).toList();
+        return tobos.unwrap().isNotEmpty ? tobos![0] : null;
       },
     );
   }
