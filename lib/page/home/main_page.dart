@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tobo/common/common_config.dart';
 import 'package:tobo/page/login/widget/drawer_widget.dart';
 import 'package:tobo/res/colors.dart';
+import 'package:tobo/utils/calendar_util.dart';
 
 import '../../r.g.dart';
 import 'controller/main_controller.dart';
@@ -99,6 +100,21 @@ class _MainPageState extends State<MainPage> {
               final tobo = _mainController.list[index];
               return Slidable(
                 key: ValueKey(index),
+                startActionPane: ActionPane(
+                  motion: const ScrollMotion(),
+                  children: [
+                    SlidableAction(
+                      flex: 1,
+                      onPressed: (context) {
+                        CalendarUtil.instance.calendarsInit(tobo);
+                      },
+                      foregroundColor: Colors.white,
+                      backgroundColor: Get.theme.primaryColor,
+                      icon: Icons.calendar_today_outlined,
+                      label: 'Calendar',
+                    ),
+                  ],
+                ),
                 endActionPane: ActionPane(
                   motion: const ScrollMotion(),
                   children: [

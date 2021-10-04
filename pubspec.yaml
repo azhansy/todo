@@ -1,7 +1,7 @@
 name: tobo
 description: A new todo application.
 publish_to: none
-version: 1.0.0+2
+version: 1.0.0+3
 environment:
   sdk: ">=2.12.0 <3.0.0"
 dependencies:
@@ -18,6 +18,8 @@ dependencies:
   simple_animations: "^4.0.0"
   flutter_slidable: "^1.0.0-dev.9"
   flutter_update_dialog: ^2.0.0
+  # https://pub.dev/packages/alarm_calendar/versions
+  alarm_calendar: ^0.0.5
 dependency_overrides:
   flutter_svg: "^0.22.0"
 dev_dependencies:
