@@ -43,7 +43,7 @@ class DrawerWidget extends StatelessWidget {
                         10.sizedBoxH,
                         Text(
                           _getHi(),
-                          style: 8.textStyle(Colours.color_666666),
+                          style: 10.textStyle(Colours.color_666666),
                         ),
                       ],
                     ),

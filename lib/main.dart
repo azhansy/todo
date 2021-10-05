@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:awesome_core/core.dart';
 import 'package:data_plugin/bmob/bmob.dart';
@@ -25,7 +26,7 @@ void main() {
 }
 
 Future<void> initBmob() async {
-  final supportEnv = !GetPlatform.isDesktop || GetPlatform.isWeb;
+  final supportEnv = Platform.isAndroid || Platform.isIOS;
   if (supportEnv) {
     await dotenv.load();
   }

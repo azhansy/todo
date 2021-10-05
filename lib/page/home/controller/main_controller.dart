@@ -8,6 +8,8 @@ import 'package:tobo/net/index.dart';
 import 'package:tobo/page/home/model/tobo.dart';
 import 'package:tobo/page/home/model/version.dart';
 
+import '../model/tobo.dart';
+
 class MainController extends BaseController {
   RxList<Tobo> list = <Tobo>[].obs;
   UpdateDialog? dialog;
@@ -15,13 +17,14 @@ class MainController extends BaseController {
   Future<void> addTobo(String content) async {
     final tempTobo = Tobo(content);
     //本地数据库的id
-    tempTobo.setObjectId(Md5Util.generateMd5(
-        DateTime.now().toString() + Random().nextInt(10000).toString()));
+    final tempId = Md5Util.generateMd5(
+        DateTime.now().toString() + Random().nextInt(10000).toString());
+    tempTobo.setObjectId(tempId);
     list.add(tempTobo);
     DbManager.instance.saveOrUpdateTobo(tempTobo);
     final Tobo? tobo = await AwesomeService.instance.saveContent(tempTobo);
     if (null != tobo) {
-      DbManager.instance.deleteTobo(tempTobo);
+      DbManager.instance.deleteTobo(tempId);
       DbManager.instance.saveOrUpdateTobo(tobo);
       list.remove(tempTobo);
       list.add(tobo);
@@ -29,10 +32,10 @@ class MainController extends BaseController {
   }
 
   Future<void> updateToboDone(int index) async {
-    final tobo = list[index];
+    final Tobo tobo = list[index];
     tobo.done = 1;
     list.remove(tobo);
-    await DbManager.instance.deleteTobo(tobo);
+    await DbManager.instance.deleteTobo(tobo.objectId!);
     //如果已经同步到服务器就删除；
     if (!tobo.isNotUpload) {
       await AwesomeService.instance.updateDone(tobo);

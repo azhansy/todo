@@ -15,14 +15,18 @@ class ContainerBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Get.theme.primaryColor.withOpacity(0.1),
-      constraints: const BoxConstraints(
-        minHeight: double.infinity,
-        minWidth: double.infinity,
+    return SizedBox(
+      width: double.infinity,
+      height: double.infinity,
+      child: Container(
+        color: Get.theme.primaryColor.withOpacity(0.1),
+        constraints: const BoxConstraints(
+          minHeight: double.infinity,
+          minWidth: double.infinity,
+        ),
+        child: child,
+        padding: padding,
       ),
-      child: child,
-      padding: padding,
     );
   }
 }

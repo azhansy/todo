@@ -111,6 +111,18 @@ class AwesomeService extends BaseRepository {
     );
   }
 
+  ///查询数据个数
+  Future<int?> _queryDoneCount() async {
+    BmobQuery<Tobo> query = BmobQuery();
+    query.addWhereEqualTo('author', Application.instance.getBmobUser());
+    query.addWhereEqualTo('done', 1);
+    return _doing<int>(() async {
+      final count = await query.queryCount();
+      debugPrint('dashu, _queryCount=$count');
+      return count;
+    });
+  }
+
   Future<T?> _doing<T>(Function function) async {
     try {
       final T result = await function();

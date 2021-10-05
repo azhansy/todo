@@ -94,12 +94,12 @@ class DbManager {
     return toboList;
   }
 
-  Future<void> deleteTobo(Tobo tobo) async {
-    debugPrint('openDatabase deleteTobo = ${tobo.toString()}');
+  Future<void> deleteTobo(String tempId) async {
+    debugPrint('openDatabase deleteTobo = $tempId');
     // await _database.rawQuery(
     //     'DELETE FROM $_dbTableAccount WHERE objectId = ?', [tobo.objectId]);
     final int count = await _database.delete(_dbTableAccount,
-        where: 'objectId = ?', whereArgs: [tobo.objectId]);
+        where: 'objectId = ?', whereArgs: [tempId]);
     debugPrint('openDatabase deleteTobo count= $count');
   }
 
