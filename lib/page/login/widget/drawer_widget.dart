@@ -2,6 +2,7 @@ import 'package:awesome_core/core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tobo/common/application.dart';
+import 'package:tobo/page/home/controller/main_controller.dart';
 import 'package:tobo/page/login/login_page.dart';
 import 'package:tobo/page/me/about_page.dart';
 import 'package:tobo/page/me/feedback_page.dart';
@@ -55,10 +56,12 @@ class DrawerWidget extends StatelessWidget {
                     child: GestureDetector(
                       onTap: () {
                         NavigatorUtil.pushName(HonorPage.routeName);
+                        // MainController controller = Get.find();
+                        // controller.queryDoneCount();
                       },
                       child: CircleAvatar(
                         child: Icon(
-                          Icons.person_pin_outlined,
+                          Icons.data_usage,
                           color: Get.theme.primaryColor,
                         ),
                         backgroundColor: Colors.white,

@@ -6,7 +6,7 @@ echo "$currentPath"
 
 flutter clean
 
-flutter build apk --release  --target-platform android-arm
+flutter build apk --release # --target-platform android-arm
 
 sleep 2s
 

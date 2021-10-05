@@ -1,6 +1,7 @@
 import 'package:awesome_core/core.dart';
 import 'package:flutter/material.dart';
-import 'package:tobo/widget/container_body.dart';
+
+import 'package:tobo/widget/todo_scaffold.dart';
 
 import 'controller/main_controller.dart';
 import 'model/tobo.dart';
@@ -34,7 +35,7 @@ class _InputPageState extends State<InputPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ScaffoldWidget(
+    return TodoScaffold(
       actions: [
         IconButton(
           icon: const Icon(Icons.done),
@@ -42,20 +43,18 @@ class _InputPageState extends State<InputPage> {
         )
       ],
       title: null == _tobo ? 'Add todo' : 'Edit todo',
-      body: ContainerBody(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: TextField(
-            decoration: const InputDecoration(
-              contentPadding: EdgeInsets.all(10.0),
-              icon: Icon(Icons.note_add),
-              labelText: 'Your todo',
-              helperText: 'Write your simple todo',
-            ),
-            controller: controller,
-            autofocus: true,
-            onSubmitted: (s) => onSave(),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: TextField(
+          decoration: const InputDecoration(
+            contentPadding: EdgeInsets.all(10.0),
+            icon: Icon(Icons.note_add),
+            labelText: 'Your todo',
+            helperText: 'Write your simple todo',
           ),
+          controller: controller,
+          autofocus: true,
+          onSubmitted: (s) => onSave(),
         ),
       ),
     );

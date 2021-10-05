@@ -1,6 +1,6 @@
 import 'package:awesome_core/core.dart';
 import 'package:flutter/material.dart';
-import 'package:tobo/widget/container_body.dart';
+import 'package:tobo/widget/todo_scaffold.dart';
 
 import 'controller/honor_controller.dart';
 
@@ -11,6 +11,7 @@ import 'controller/honor_controller.dart';
 ///
 class HonorPage extends StatelessWidget {
   static const String routeName = '/HonorPage';
+  static const String showTips = '未来会有更多的视图、月图等\n个性化大数据分析';
 
   HonorPage({Key? key}) : super(key: key);
 
@@ -18,22 +19,35 @@ class HonorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScaffoldWidget(
-      title: 'Honor Roll',
-      body: ContainerBody(
-          child: Center(
-        child: Container(
-          height: 200.0,
-          width: 200.0,
-          decoration: 100.boxDecoration(Get.theme.primaryColor),
-          child: Center(
-            child: Text(
-              '数据分析中...',
-              style: 15.textStyle(Colors.white),
+    return TodoScaffold(
+      title: 'TODO 大数据分析',
+      actions: [
+        IconButton(
+          onPressed: () {
+            showTips.toast();
+          },
+          icon: const Icon(Icons.notifications_active_outlined),
+          tooltip: showTips,
+        )
+      ],
+      body: Center(
+        child: GestureDetector(
+          onTap: () {
+            _honorController.queryDoneCount();
+          },
+          child: Container(
+            height: 200.0,
+            width: 200.0,
+            decoration: 100.boxDecoration(Get.theme.primaryColor),
+            child: Center(
+              child: Text(
+                '数据中心',
+                style: 30.textStyle(Colors.white),
+              ),
             ),
           ),
         ),
-      )),
+      ),
     );
   }
 }

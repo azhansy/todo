@@ -113,6 +113,7 @@ class AwesomeService extends BaseRepository {
 
   ///查询数据个数
   Future<int?> queryDoneCount() async {
+    Get.loading();
     final BmobQuery<Tobo> query = BmobQuery();
     query.addWhereEqualTo('author', Application.instance.getBmobUser());
     query.addWhereEqualTo('done', 1);

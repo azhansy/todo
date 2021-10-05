@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 class Colours {
   static const Color appMain = Color(0xFF8F94FB);
   static const Color app_main_2 = Color(0x998F94FB);
+  static const Color appBg = Color(0xFFDADAF3);
   static const Color color_ffde49 = Color(0xFFFFDE49);
   static const Color main_line_color = Color(0xFFFFE4A2);
   static const Color bg_color = Color(0xFFF6F6FA);

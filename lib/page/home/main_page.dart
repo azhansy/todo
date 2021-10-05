@@ -6,7 +6,7 @@ import 'package:tobo/common/common_config.dart';
 import 'package:tobo/page/login/widget/drawer_widget.dart';
 import 'package:tobo/res/colors.dart';
 import 'package:tobo/utils/calendar_util.dart';
-import 'package:tobo/widget/container_body.dart';
+
 
 import '../../r.g.dart';
 import 'controller/main_controller.dart';
@@ -33,9 +33,9 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: ContainerBody(
-        child: _buildList(context),
-      ),
+      backgroundColor: Colours.appBg,
+      resizeToAvoidBottomInset: false,
+      body: _buildList(context),
       drawer: const DrawerWidget(),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {

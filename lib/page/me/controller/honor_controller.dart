@@ -1,8 +1,10 @@
-import 'dart:ui';
-
 import 'package:awesome_core/core.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_update_dialog/update_dialog.dart';
 import 'package:tobo/net/awesome_service.dart';
+import 'package:tobo/widget/honor_widget.dart';
+
+import '../../../r.g.dart';
 
 class HonorController extends BaseController {
   UpdateDialog? dialog;
@@ -15,7 +17,8 @@ class HonorController extends BaseController {
 
   Future<void> queryDoneCount() async {
     final int count = await AwesomeService.instance.queryDoneCount() ?? 0;
-    showUpdateDialog('太棒了！', count);
+    // showUpdateDialog('太棒了！', count);
+    NavigatorUtil.showCommonDialog(HonorWidget(count));
   }
 
   void showUpdateDialog(String title, int count) {
@@ -28,7 +31,7 @@ class HonorController extends BaseController {
         titleTextSize: 14,
         contentTextSize: 12,
         buttonTextSize: 12,
-        // topImage: Image.asset(),
+        topImage: Image.asset(R.image.ic_honor_header().assetName),
         extraHeight: 5,
         radius: 8,
         themeColor: Get.theme.primaryColor,
