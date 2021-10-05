@@ -17,9 +17,8 @@ dependencies:
   r_dart_library: 0.4.0-nullsafety.0
   simple_animations: "^4.0.0"
   flutter_slidable: "^1.0.0-dev.9"
-  flutter_update_dialog: ^2.0.0
-  # https://pub.dev/packages/alarm_calendar/versions
-  alarm_calendar: ^0.0.5
+  flutter_update_dialog: "^2.0.0"
+  alarm_calendar: "^0.0.5"
 dependency_overrides:
   flutter_svg: "^0.22.0"
 dev_dependencies:
@@ -41,20 +40,22 @@ flutter_icons:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/background.png
-    - assets/images/bg.png
-    - assets/images/clock.png
-    - assets/images/light-1.png
-    - assets/images/light-2.png
-    - assets/images/logo.png
-    - assets/images/logo.svg
-    - assets/images/logo3x.png
-    - assets/images/logologo.png
-    - ".env"
+  - assets/images/background.png
+  - assets/images/bg.png
+  - assets/images/clock.png
+  - assets/images/ic_honor.svg
+  - assets/images/ic_honor_header.png
+  - assets/images/light-1.png
+  - assets/images/light-2.png
+  - assets/images/logo.png
+  - assets/images/logo.svg
+  - assets/images/logo3x.png
+  - assets/images/logologo.png
+  - ".env"
 flr:
   core_version: 3.2.0
   dartfmt_line_length: 80
   assets:
-    - assets/images
-    - ".env"
+  - assets/images
+  - ".env"
   fonts: []

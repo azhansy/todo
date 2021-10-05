@@ -9,6 +9,7 @@ import 'page/login/login_page.dart';
 import 'page/login/register_page.dart';
 import 'page/me/about_page.dart';
 import 'page/me/feedback_page.dart';
+import 'page/me/honor_page.dart';
 import 'page/me/theme_page.dart';
 
 class AppPages {
@@ -43,6 +44,10 @@ class AppPages {
     GetPage<Widget>(
       name: FeedbackPage.routeName,
       page: () => const FeedbackPage(),
+    ),
+    GetPage<Widget>(
+      name: HonorPage.routeName,
+      page: () => HonorPage(),
     ),
     GetPage<Widget>(
       name: MainPage.routeName,

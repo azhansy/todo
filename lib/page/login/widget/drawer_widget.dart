@@ -5,6 +5,7 @@ import 'package:tobo/common/application.dart';
 import 'package:tobo/page/login/login_page.dart';
 import 'package:tobo/page/me/about_page.dart';
 import 'package:tobo/page/me/feedback_page.dart';
+import 'package:tobo/page/me/honor_page.dart';
 import 'package:tobo/page/me/theme_page.dart';
 import 'package:tobo/res/colors.dart';
 
@@ -48,11 +49,20 @@ class DrawerWidget extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const Positioned(
+                  Positioned(
                     top: 10.0,
                     left: 0.0,
-                    child: CircleAvatar(
-                      child: Icon(Icons.lock_clock),
+                    child: GestureDetector(
+                      onTap: () {
+                        NavigatorUtil.pushName(HonorPage.routeName);
+                      },
+                      child: CircleAvatar(
+                        child: Icon(
+                          Icons.person_pin_outlined,
+                          color: Get.theme.primaryColor,
+                        ),
+                        backgroundColor: Colors.white,
+                      ),
                     ),
                   ),
                 ],

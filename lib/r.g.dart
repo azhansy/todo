@@ -107,6 +107,12 @@ class _R_Image_AssetResource {
   final clock =
       const AssetResource("assets/images/clock.png", packageName: null);
 
+  /// asset: assets/images/ic_honor_header.png
+  // ignore: non_constant_identifier_names
+  final ic_honor_header = const AssetResource(
+      "assets/images/ic_honor_header.png",
+      packageName: null);
+
   /// asset: assets/images/light-1.png
   // ignore: non_constant_identifier_names
   final light_1 =
@@ -135,6 +141,11 @@ class _R_Image_AssetResource {
 // ignore: camel_case_types
 class _R_Svg_AssetResource {
   const _R_Svg_AssetResource();
+
+  /// asset: assets/images/ic_honor.svg
+  // ignore: non_constant_identifier_names
+  final ic_honor =
+      const AssetResource("assets/images/ic_honor.svg", packageName: null);
 
   /// asset: assets/images/logo.svg
   // ignore: non_constant_identifier_names
@@ -169,6 +180,12 @@ class _R_Image {
   // ignore: non_constant_identifier_names
   AssetImage clock() {
     return AssetImage(asset.clock.keyName);
+  }
+
+  /// asset: assets/images/ic_honor_header.png
+  // ignore: non_constant_identifier_names
+  AssetImage ic_honor_header() {
+    return AssetImage(asset.ic_honor_header.keyName);
   }
 
   /// asset: assets/images/light-1.png
@@ -208,6 +225,14 @@ class _R_Svg {
   const _R_Svg();
 
   final asset = const _R_Svg_AssetResource();
+
+  /// asset: assets/images/ic_honor.svg
+  // ignore: non_constant_identifier_names
+  AssetSvg ic_honor({required double width, required double height}) {
+    final imageProvider =
+        AssetSvg(asset.ic_honor.keyName, width: width, height: height);
+    return imageProvider;
+  }
 
   /// asset: assets/images/logo.svg
   // ignore: non_constant_identifier_names
