@@ -48,5 +48,9 @@
 		<false/>
 		<key>UIStatusBarHidden</key>
 		<false/>
+		<key>NSCalendarsUsageDescription</key>
+        <string>TODO需要访问你的日历</string>
+        <key>NSRemindersUsageDescription</key>
+        <string>TODO需要访问你的提醒事项</string>
 	</dict>
 </plist>

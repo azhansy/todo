@@ -1,6 +1,7 @@
 import 'package:awesome_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:tobo/res/colors.dart';
+import 'package:tobo/widget/container_body.dart';
 
 ///
 /// @author dashu
@@ -21,11 +22,8 @@ class _ThemePageState extends State<ThemePage> {
   Widget build(BuildContext context) {
     return ScaffoldWidget(
       title: 'Theme Color',
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
+      body: ContainerBody(
         padding: 20.marginTop(),
-        color: Get.theme.primaryColor.withOpacity(0.1),
         child: Column(
           children: [
             Wrap(

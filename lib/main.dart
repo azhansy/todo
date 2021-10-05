@@ -34,18 +34,65 @@ Future<void> initBmob() async {
       supportEnv ? dotenv.env['api_key'] : '');
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  late Color _themeColor;
+
+  @override
+  void initState() {
+    super.initState();
+    initListener();
+  }
+
+  void initListener() {
+    final colorValue = SpUtil.getInt(BaseConfig.KEY_THEME)!;
+    if (colorValue != 0) {
+      _themeColor = Color(colorValue);
+    } else {
+      _themeColor = Colours.appMain;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return App(
-      key: const ValueKey('MyApp'),
-      defaultThemeColor: Colours.appMain,
-      getPages: AppPages.routes,
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      enableLog: !kReleaseMode,
+      logWriterCallback: Logger.write,
       initialRoute: AppPages.initial,
+      getPages: AppPages.routes,
+      defaultTransition: Transition.cupertino,
       locale: LanguageUtil.instance.initLanguage().toLocale(),
+      theme: ThemeUtil.copyTheme(_themeColor),
       translations: TranslationService(),
+      builder: (context, child) {
+        return OKToast(
+          backgroundColor: Colors.black54,
+          textPadding:
+              const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
+          radius: 20.0,
+          position: ToastPosition.bottom,
+          child: GestureDetector(
+            onTap: () {
+              hideKeyboard(context);
+            },
+            child: child,
+          ),
+        );
+      },
     );
+  }
+
+  void hideKeyboard(BuildContext context) {
+    final currentFocus = FocusScope.of(context);
+    if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+      FocusManager.instance.primaryFocus?.unfocus();
+    }
   }
 }

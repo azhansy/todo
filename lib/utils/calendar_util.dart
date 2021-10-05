@@ -12,7 +12,7 @@ class CalendarUtil {
 
   void calendarsInit(Tobo tobo) {
     final Calendars calendars = Calendars(
-        DateTime.now().add(const Duration(hours: 1)),
+        DateTime.now(),
         DateTime.now().add(const Duration(days: 1)));
     //更新参数
     calendars.setTitle = 'TODO[${tobo.content}]';

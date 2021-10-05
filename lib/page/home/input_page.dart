@@ -1,5 +1,6 @@
 import 'package:awesome_core/core.dart';
 import 'package:flutter/material.dart';
+import 'package:tobo/widget/container_body.dart';
 
 import 'controller/main_controller.dart';
 import 'model/tobo.dart';
@@ -41,10 +42,7 @@ class _InputPageState extends State<InputPage> {
         )
       ],
       title: null == _tobo ? 'Add todo' : 'Edit todo',
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        color: Get.theme.primaryColor.withOpacity(0.1),
+      body: ContainerBody(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: TextField(

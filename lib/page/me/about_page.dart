@@ -1,6 +1,7 @@
 import 'package:awesome_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:tobo/res/colors.dart';
+import 'package:tobo/widget/container_body.dart';
 
 ///
 /// @author dashu
@@ -21,9 +22,7 @@ class _AboutPageState extends State<AboutPage> {
   Widget build(BuildContext context) {
     return ScaffoldWidget(
       title: 'About App',
-      body: Container(
-        height: double.infinity,
-        color: Get.theme.primaryColor.withOpacity(0.1),
+      body: ContainerBody(
         child: Column(
           children: [
             100.sizedBoxH,

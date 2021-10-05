@@ -1,6 +1,7 @@
 import 'package:awesome_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:tobo/net/awesome_service.dart';
+import 'package:tobo/widget/container_body.dart';
 
 ///
 /// @author dashu
@@ -29,10 +30,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
           onPressed: () => onSave(),
         )
       ],
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        color: Get.theme.primaryColor.withOpacity(0.1),
+      body: ContainerBody(
         padding: 20.marginTop(),
         child: Padding(
           padding: const EdgeInsets.all(15.0),

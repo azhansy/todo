@@ -4,6 +4,7 @@ import 'package:awesome_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tobo/page/home/main_page.dart';
+import 'package:tobo/widget/container_body.dart';
 import 'package:vector_math/vector_math_64.dart' hide Colors;
 
 import '../../r.g.dart';
@@ -32,7 +33,7 @@ class _SplashPageState extends State<SplashPage>
     super.initState();
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 4),
+      duration: const Duration(seconds: 3),
     )..addListener(() => setState(() {}));
     animationController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
@@ -60,10 +61,7 @@ class _SplashPageState extends State<SplashPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        color: Get.theme.primaryColor.withOpacity(0.3),
+      body: ContainerBody(
         child: Center(
           child: FadeTransition(
             opacity: animation,

@@ -14,6 +14,8 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
+  - alarm_calendar (0.0.5):
+    - Flutter
   - awesome_core_native (0.0.1):
     - Flutter
   - connectivity (0.0.1):
@@ -124,6 +126,7 @@ PODS:
     - SDWebImage
 
 DEPENDENCIES:
+  - alarm_calendar (from `.symlinks/plugins/alarm_calendar/ios`)
   - awesome_core_native (from `.symlinks/plugins/awesome_core_native/ios`)
   - connectivity (from `.symlinks/plugins/connectivity/ios`)
   - data_plugin (from `.symlinks/plugins/data_plugin/ios`)
@@ -163,6 +166,8 @@ SPEC REPOS:
     - ZLPhotoBrowser-objc
 
 EXTERNAL SOURCES:
+  alarm_calendar:
+    :path: ".symlinks/plugins/alarm_calendar/ios"
   awesome_core_native:
     :path: ".symlinks/plugins/awesome_core_native/ios"
   connectivity:
@@ -212,6 +217,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  alarm_calendar: 3deb03b6373714e199db21e059a0d00a0d3b7f4c
   awesome_core_native: c7404388a145af879beb2474d7c3b007b81d6aed
   connectivity: c4130b2985d4ef6fd26f9702e886bd5260681467
   data_plugin: 718d6550a02b30410748b3b7711ee393933070e6
