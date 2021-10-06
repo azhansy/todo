@@ -83,7 +83,7 @@ class DrawerWidget extends StatelessWidget {
           ListTile(
             title: const Text('Feedback'),
             onTap: () {
-              NavigatorUtil.pop();
+              // NavigatorUtil.pop();
               NavigatorUtil.pushName(FeedbackPage.routeName);
             },
           ),
@@ -91,7 +91,7 @@ class DrawerWidget extends StatelessWidget {
           ListTile(
             title: const Text('About App'),
             onTap: () {
-              NavigatorUtil.pop();
+              // NavigatorUtil.pop();
               NavigatorUtil.pushName(AboutPage.routeName);
             },
           ),

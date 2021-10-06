@@ -1,7 +1,6 @@
 import 'package:awesome_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:tobo/res/colors.dart';
-
 import 'package:tobo/widget/todo_scaffold.dart';
 
 ///
@@ -21,6 +20,7 @@ class AboutPage extends StatefulWidget {
 class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
+    final indent = (Get.width - 40.w) / 2;
     return TodoScaffold(
       title: 'About App',
       body: Column(
@@ -39,8 +39,18 @@ class _AboutPageState extends State<AboutPage> {
           ),
           Center(
             child: Text(
-              '格比飞勇@出品V${BaseConfig.VERSION_CODE}',
+              '格比飞勇@V${BaseConfig.VERSION_CODE}',
               style: 10.textStyle(Colours.gray_99),
+            ),
+          ),
+          Divider(
+            endIndent: indent,
+            indent: indent,
+          ),
+          Center(
+            child: Text(
+              '永久保存、记录自己的成长心路历程，是一件很有意义的事情。',
+              style: 8.textStyle(Colours.gray_99),
             ),
           ),
           30.sizedBoxH,

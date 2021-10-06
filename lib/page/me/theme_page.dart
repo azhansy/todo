@@ -20,30 +20,25 @@ class ThemePage extends StatefulWidget {
 class _ThemePageState extends State<ThemePage> {
   @override
   Widget build(BuildContext context) {
-    final size = (Get.width - 7 * 10) / 7;
     return TodoScaffold(
       title: 'Theme Color',
-      body: Column(
-        children: [
-          20.sizedBoxH,
-          Wrap(
-            children: themeColorMap.keys.map((String key) {
-              final Color value = themeColorMap[key]!;
-              return InkWell(
-                onTap: () {
-                  SpUtil.putInt(BaseConfig.KEY_THEME, value.value);
-                  Get.changeTheme(ThemeUtil.copyTheme(value));
-                },
-                child: Container(
-                  margin: const EdgeInsets.all(5.0),
-                  width: size,
-                  height: size,
-                  color: value,
-                ),
-              );
-            }).toList(),
-          ),
-        ],
+      body: GridView.count(
+        crossAxisCount: 7,
+        mainAxisSpacing: 5.0.w,
+        crossAxisSpacing: 5.0.w,
+        padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
+        children: themeColorMap.keys.map((String key) {
+          final Color value = themeColorMap[key]!;
+          return InkWell(
+            onTap: () {
+              SpUtil.putInt(BaseConfig.KEY_THEME, value.value);
+              Get.changeTheme(ThemeUtil.copyTheme(value));
+            },
+            child: Container(
+              color: value,
+            ),
+          );
+        }).toList(),
       ),
     );
   }
