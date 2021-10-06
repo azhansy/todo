@@ -31,8 +31,8 @@ class HonorWidget extends Dialog {
             children: [
               SvgPicture.asset(
                 R.svg.asset.ic_honor.assetName,
-                width: 200.0,
-                height: 200.0,
+                width: 200.0.w,
+                height: 200.0.w,
               ),
               Text(
                 '太棒了！',
@@ -48,7 +48,7 @@ class HonorWidget extends Dialog {
                   style: 40.textStyle(Colours.price_red),
                 ),
                 TextSpan(
-                  text: '个计划, \n为你自己点个赞！',
+                  text: '个计划, \n${count == 0 ? '要继续加油哦！' : '为你自己点个赞！'}',
                   style: 18.textStyle(Colours.color_white),
                 ),
               ])),

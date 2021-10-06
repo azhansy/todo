@@ -20,6 +20,7 @@ class ThemePage extends StatefulWidget {
 class _ThemePageState extends State<ThemePage> {
   @override
   Widget build(BuildContext context) {
+    final size = (Get.width - 7 * 10) / 7;
     return TodoScaffold(
       title: 'Theme Color',
       body: Column(
@@ -35,8 +36,8 @@ class _ThemePageState extends State<ThemePage> {
                 },
                 child: Container(
                   margin: const EdgeInsets.all(5.0),
-                  width: 36.0,
-                  height: 36.0,
+                  width: size,
+                  height: size,
                   color: value,
                 ),
               );

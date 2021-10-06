@@ -1,6 +1,7 @@
 import 'package:awesome_core/core.dart';
 import 'package:data_plugin/bmob/table/bmob_user.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tobo/animation/FadeAnimation.dart';
 import 'package:tobo/net/index.dart';
 import 'package:tobo/page/home/main_page.dart';
@@ -179,6 +180,11 @@ class _LoginPageState extends State<LoginPage> {
                                     onEditingComplete: () {
                                       _clickButton();
                                     },
+                                    inputFormatters: [
+                                      //只允许输入字母
+                                      FilteringTextInputFormatter.allow(
+                                          RegExp('^[a-z0-9A-Z]+'))
+                                    ],
                                   ),
                                 )
                               ],

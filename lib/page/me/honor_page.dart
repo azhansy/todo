@@ -36,8 +36,8 @@ class HonorPage extends StatelessWidget {
             _honorController.queryDoneCount();
           },
           child: Container(
-            height: 200.0,
-            width: 200.0,
+            height: 200.0.w,
+            width: 200.0.w,
             decoration: 100.boxDecoration(Get.theme.primaryColor),
             child: Center(
               child: Text(

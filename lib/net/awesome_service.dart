@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:awesome_core/core.dart';
 import 'package:data_plugin/bmob/bmob_query.dart';
 import 'package:data_plugin/bmob/response/bmob_error.dart';
@@ -5,6 +7,7 @@ import 'package:data_plugin/bmob/response/bmob_registered.dart';
 import 'package:data_plugin/bmob/response/bmob_saved.dart';
 import 'package:data_plugin/bmob/table/bmob_user.dart';
 import 'package:flutter/foundation.dart';
+import 'package:sp_util/sp_util.dart';
 import 'package:tobo/common/application.dart';
 import 'package:tobo/page/home/model/tobo.dart';
 import 'package:tobo/page/home/model/version.dart';
@@ -45,6 +48,7 @@ class AwesomeService extends BaseRepository {
       bmobUser.sessionToken = user.sessionToken;
       bmobUser.createdAt = user.createdAt;
       bmobUser.objectId = user.objectId;
+      SpUtil.putString("user", json.encode(bmobUser));
       BaseConfig.accountName.writeStorage(account);
       Application.instance.setAccount(bmobUser);
       return bmobUser;

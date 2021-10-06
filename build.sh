@@ -4,6 +4,9 @@
 currentPath=$(pwd)
 echo "$currentPath"
 
+#build居然出现在Android目录下
+rm -rf "$currentPath"/android/app/build
+
 flutter clean
 
 flutter build apk --release # --target-platform android-arm
@@ -12,5 +15,6 @@ sleep 2s
 
 #移动目录
 mv "$currentPath"/build/app/outputs/apk/release/*.apk "$currentPath"/release/
+mv "$currentPath"/android/app/build/outputs/apk/release/*.apk "$currentPath"/release/
 
 echo "==============End to Build==============="

@@ -1,7 +1,7 @@
 name: tobo
 description: A new todo application.
 publish_to: none
-version: 1.0.0+3
+version: 1.0.0+4
 environment:
   sdk: ">=2.12.0 <3.0.0"
 dependencies:
@@ -11,9 +11,11 @@ dependencies:
     path: "../flutter_awesome_core"
   flutter_dotenv: "^5.0.2"
   data_plugin:
+#    path: ../../plugin/bmob-flutter-sdk/data_plugin
     git:
       url: https://github.com/azhansy/bmob-flutter-sdk.git
       path: data_plugin
+      ref: 7e5caf82
   r_dart_library: 0.4.0-nullsafety.0
   simple_animations: "^4.0.0"
   flutter_slidable: "^1.0.0-dev.9"

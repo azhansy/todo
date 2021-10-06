@@ -1,6 +1,7 @@
 import 'package:awesome_core/core.dart';
 import 'package:data_plugin/bmob/table/bmob_user.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tobo/animation/FadeAnimation.dart';
 import 'package:tobo/net/awesome_service.dart';
 import 'package:tobo/page/home/main_page.dart';
@@ -148,23 +149,27 @@ class RegisterPage extends StatelessWidget {
                                 Container(
                                   padding: const EdgeInsets.all(8.0),
                                   child: TextFormField(
-                                    decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        icon: const Icon(Icons.lock),
-                                        hintText: 'Password',
-                                        hintStyle:
-                                            TextStyle(color: Colors.grey[400])),
-                                    validator: (v) {
-                                      return (v?.trim().length ?? 0) > 4
-                                          ? null
-                                          : 'please Enter more than 4 characters';
-                                    },
-                                    onSaved: (value) => psw = value ?? '',
-                                    focusNode: pswFocusNode,
-                                    onEditingComplete: () {
-                                      _clickButton();
-                                    },
-                                  ),
+                                      decoration: InputDecoration(
+                                          border: InputBorder.none,
+                                          icon: const Icon(Icons.lock),
+                                          hintText: 'Password',
+                                          hintStyle: TextStyle(
+                                              color: Colors.grey[400])),
+                                      validator: (v) {
+                                        return (v?.trim().length ?? 0) > 4
+                                            ? null
+                                            : 'please Enter more than 4 characters';
+                                      },
+                                      onSaved: (value) => psw = value ?? '',
+                                      focusNode: pswFocusNode,
+                                      onEditingComplete: () {
+                                        _clickButton();
+                                      },
+                                      inputFormatters: [
+                                        //只允许输入字母
+                                        FilteringTextInputFormatter.allow(
+                                            RegExp('^[a-z0-9A-Z]+'))
+                                      ]),
                                 )
                               ],
                             ),
