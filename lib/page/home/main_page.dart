@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tobo/common/common_config.dart';
+import 'package:tobo/page/home/model/tobo.dart';
 import 'package:tobo/page/login/widget/drawer_widget.dart';
 import 'package:tobo/res/colors.dart';
 import 'package:tobo/utils/calendar_util.dart';
-
 
 import '../../r.g.dart';
 import 'controller/main_controller.dart';
@@ -111,6 +111,16 @@ class _MainPageState extends State<MainPage> {
                       icon: Icons.calendar_today_outlined,
                       label: 'Calendar',
                     ),
+                    SlidableAction(
+                      flex: 1,
+                      onPressed: (context) {
+                        _buildDatePicker(context, tobo);
+                      },
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colours.color_ed7161,
+                      icon: Icons.alarm,
+                      label: 'Alarm',
+                    ),
                   ],
                 ),
                 endActionPane: ActionPane(
@@ -152,5 +162,15 @@ class _MainPageState extends State<MainPage> {
               );
             },
           ));
+  }
+
+  Future<void> _buildDatePicker(BuildContext context, Tobo tobo) async {
+    final TimeOfDay? timeOfDay = await showTimePicker(
+        context: context,
+        initialTime: TimeOfDay.fromDateTime(
+            DateTime.now().add(const Duration(hours: 1))));
+    if (null != timeOfDay) {
+      CalendarUtil.instance.setClock(tobo, timeOfDay);
+    }
   }
 }
