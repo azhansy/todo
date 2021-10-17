@@ -9,6 +9,8 @@ rm -rf "$currentPath"/android/app/build
 
 flutter clean
 
+echo "==============Build app ==============="
+
 flutter build apk --release # --target-platform android-arm
 
 sleep 2s
@@ -16,5 +18,17 @@ sleep 2s
 #移动目录
 mv "$currentPath"/build/app/outputs/apk/release/*.apk "$currentPath"/release/
 mv "$currentPath"/android/app/build/outputs/apk/release/*.apk "$currentPath"/release/
+
+echo "==============Build app End ==============="
+
+echo "==============Build web ==============="
+
+flutter build web
+
+sleep 2s
+
+mv "$currentPath"/build/web "$currentPath"/release/
+
+echo "==============Build web End==============="
 
 echo "==============End to Build==============="
