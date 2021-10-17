@@ -95,7 +95,7 @@ class AwesomeService extends BaseRepository {
         query.setLimit(10);
         final List<dynamic>? data = await query.queryObjects();
         final List<Tobo>? tobos = data?.map((i) => Tobo.fromJson(i)).toList();
-        return tobos;
+        return tobos ?? [];
       },
     );
   }

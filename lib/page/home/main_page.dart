@@ -133,7 +133,7 @@ class _MainPageState extends State<MainPage> {
                       },
                       foregroundColor: Colors.white,
                       backgroundColor: Get.theme.primaryColor,
-                      icon: Icons.done,
+                      icon: Icons.edit,
                       label: 'Edit',
                     ),
                     SlidableAction(

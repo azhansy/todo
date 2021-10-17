@@ -139,6 +139,7 @@ DEPENDENCIES:
   - get_version (from `.symlinks/plugins/get_version/ios`)
   - image_picker (from `.symlinks/plugins/image_picker/ios`)
   - image_pickers (from `.symlinks/plugins/image_pickers/ios`)
+  - nova_alarm_plugin (from `.symlinks/plugins/nova_alarm_plugin/ios`)
   - package_info (from `.symlinks/plugins/package_info/ios`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
@@ -192,6 +193,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/image_picker/ios"
   image_pickers:
     :path: ".symlinks/plugins/image_pickers/ios"
+  nova_alarm_plugin:
+    :path: ".symlinks/plugins/nova_alarm_plugin/ios"
   package_info:
     :path: ".symlinks/plugins/package_info/ios"
   package_info_plus:
@@ -235,6 +238,7 @@ SPEC CHECKSUMS:
   image_picker: 50e7c7ff960e5f58faa4d1f4af84a771c671bc4a
   image_pickers: 25c8916d358bc9d2707cb470ba3d57497f105773
   libwebp: 98a37e597e40bfdb4c911fc98f2c53d0b12d05fc
+  nova_alarm_plugin: d5058b33a75f8e124ab4b52794c8968ca8157687
   package_info: 873975fc26034f0b863a300ad47e7f1ac6c7ec62
   package_info_plus: 6c92f08e1f853dc01228d6f553146438dafcd14e
   path_provider: d1e9807085df1f9cc9318206cd649dc0b76be3de

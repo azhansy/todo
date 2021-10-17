@@ -68,8 +68,11 @@ class MainController extends BaseController {
   Future<void> getList() async {
     final List<Tobo> listDb = await DbManager.instance.getToboList();
     list.value = listDb;
-    final List<Tobo> listNet =
-        await AwesomeService.instance.getTodoList() ?? [];
+    final List<Tobo>? listNet =
+        await AwesomeService.instance.getTodoList();
+    if (listNet == null) {
+      return;
+    }
     if (listNet.isNotEmpty) {
       list.value = listNet;
     }

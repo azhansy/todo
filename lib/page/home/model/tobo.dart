@@ -26,11 +26,13 @@ class Tobo extends BmobObject {
     map['done'] = done;
     map['author'] = Application.instance.getBmobUser();
     map[Bmob.BMOB_PROPERTY_OBJECT_ID] = objectId;
+    map[Bmob.BMOB_PROPERTY_CREATED_AT] = createdAt;
+    map[Bmob.BMOB_PROPERTY_UPDATED_AT] = updatedAt;
     return map;
   }
 
   @override
   String toString() {
-    return 'Tobo{content: $content, done: $done, objectId: $objectId}';
+    return 'Tobo{content: $content, done: $done, objectId: $objectId, createdAt:$createdAt}';
   }
 }

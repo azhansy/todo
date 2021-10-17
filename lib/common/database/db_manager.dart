@@ -129,8 +129,8 @@ class DbManager {
           ]);
     } else {
       result = await _database.rawUpdate(
-          'UPDATE $_dbTableAccount SET createdAt = ?,updatedAt = ?,content = ?,done = ?',
-          [info.createdAt, info.updatedAt, info.content, info.done]);
+          'UPDATE $_dbTableAccount SET createdAt = ?, updatedAt = ?, content = ?, done = ? WHERE objectId = ?',
+          [info.createdAt, info.updatedAt, info.content, info.done, info.objectId]);
     }
 
     return result;
