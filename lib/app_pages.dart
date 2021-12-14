@@ -1,3 +1,4 @@
+import 'package:awesome_core/core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:tobo/page/login/splash_page.dart';
@@ -13,13 +14,13 @@ import 'page/me/honor_page.dart';
 import 'page/me/theme_page.dart';
 
 class AppPages {
-  static const initial = SplashPage.routeName;
+  static const initial = MainPage.routeName;
 
   static final List<GetPage<Widget>> routes = [
-    GetPage<Widget>(
-      name: SplashPage.routeName,
-      page: () => const SplashPage(),
-    ),
+    // GetPage<Widget>(
+    //   name: SplashPage.routeName,
+    //   page: () => const SplashPage(),
+    // ),
     GetPage<Widget>(
       name: RegisterPage.routeName,
       page: () => RegisterPage(),

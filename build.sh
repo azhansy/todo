@@ -11,7 +11,7 @@ flutter clean
 
 echo "==============Build app ==============="
 
-flutter build apk --release # --target-platform android-arm
+flutter build apk --release  --obfuscate --split-debug-info=./build/symbols
 
 sleep 2s
 

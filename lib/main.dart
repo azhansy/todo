@@ -22,17 +22,21 @@ void main() {
       Application.instance.init();
       runApp(const MyApp());
     },
+    h: 375.0,
+    w: 812.0,
   );
 }
 
 Future<void> initBmob() async {
-  final supportEnv = Platform.isAndroid || Platform.isIOS;
+  final supportEnv = GetPlatform.isMobile;
   if (supportEnv) {
     await dotenv.load();
   }
   debugPrint('初始化bmob=$supportEnv');
-  Bmob.init('https://api2.bmob.cn', supportEnv ? dotenv.env['app_id'] : '',
-      supportEnv ? dotenv.env['api_key'] : '');
+  Bmob.init(
+      'https://api2.bmob.cn',
+      supportEnv ? dotenv.env['app_id'] : '90ec4fe40d2610e59fb7dc987e3496c3',
+      supportEnv ? dotenv.env['api_key'] : 'd58c130b9fb0ad3217d8448ea8cf02e2');
 }
 
 class MyApp extends StatefulWidget {

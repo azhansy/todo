@@ -1,3 +1,4 @@
+import 'package:awesome_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -25,6 +26,9 @@ class DbManager {
   static DbManager get instance => _instance ??= DbManager._();
 
   Future<void> init() async {
+    if (!GetPlatform.isMobile) {
+      return;
+    }
     final databasesPath = await getDatabasesPath();
     final String path = join(databasesPath, _dbName);
 
@@ -81,6 +85,9 @@ class DbManager {
   }
 
   Future<List<Tobo>> getToboList() async {
+    if (!GetPlatform.isMobile) {
+      return [];
+    }
     final list = await _database.rawQuery(
         'SELECT * FROM $_dbTableAccount limit ${CommonConfig.maxCount}');
     final List<Tobo> toboList = [];
@@ -95,6 +102,9 @@ class DbManager {
   }
 
   Future<void> deleteTobo(String tempId) async {
+    if (!GetPlatform.isMobile) {
+      return;
+    }
     debugPrint('openDatabase deleteTobo = $tempId');
     // await _database.rawQuery(
     //     'DELETE FROM $_dbTableAccount WHERE objectId = ?', [tobo.objectId]);
@@ -104,12 +114,18 @@ class DbManager {
   }
 
   Future<void> deleteAllTobo() async {
+    if (!GetPlatform.isMobile) {
+      return;
+    }
     debugPrint('delete all=');
     //要清除表数据，避免只删了栈顶的单条数据
     await _database.rawQuery('DELETE FROM $_dbTableAccount');
   }
 
   Future<int> saveOrUpdateTobo(Tobo info) async {
+    if (!GetPlatform.isMobile) {
+      return -1;
+    }
     debugPrint('openDatabase saveOrUpdateAccount = ' + info.toString());
 
     final rawQuery = await _database.rawQuery(
