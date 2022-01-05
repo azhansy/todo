@@ -11,7 +11,7 @@ flutter clean
 
 echo "==============Build app ==============="
 
-flutter build apk --release  --obfuscate --split-debug-info=./build/symbols
+flutter build apk --release  #--obfuscate --split-debug-info=./build/symbols（object not found for DQa）
 
 sleep 2s
 
