@@ -1,0 +1,35 @@
+# 触发工作流的操作
+on:
+  push:
+    branches:
+      - master
+      # 工作流名字
+name: Build and Release apk
+# 需要执行的任务
+jobs:
+  build:
+    name: Build APK
+    # 定义运行环境
+    runs-on: ubuntu-latest
+    # 执行步骤
+    steps:
+      # 步骤执行之前，先拉取最新代码
+      - uses: actions/checkout@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      # 配置 Flutter 环境
+      - uses: subosito/flutter-action@v1
+        with:
+            channel: "stable"
+#          flutter-version: '1.7.8+hotfix.4'
+      # 执行构建之前，更新 flutter 依赖
+      - run: flutter pub get
+      # 测试
+      - run: flutter test
+      - run: flutter build apk --release
+      - name: Create a Release APK
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/app/outputs/apk/release/*.apk"
+          token: ${{ secrets.MY_RElEASE_TOKEN }}
